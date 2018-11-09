@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+<meta name="theme-color" content="#3C8DBC">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="HandheldFriendly" content="True" />
+
+
+<meta name="description" content="这里是 @printempw 的个人博客，基本上啥都写：开发心得分享，日常吐槽吹逼，偶尔也会写正经文字，欢迎订阅。" />
+
+  <meta name="keywords" content="博客,Ghost,Hexo," />
+
+
+
+
+
+
+<meta name="google-site-verification" content="WUNRfYChNMDduwLOFHG41TsVrre6BOaI7jKshEvtRts" />
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta name="generator" content="Hexo" />
+
+
+<meta name="description" content="是的，我又双叒叕换博客程序了。 话是这样说，其实也没有很频繁啦，上一次从 WordPress 迁移至 Ghost 已经是一年多前的事了。这次是从 Ghost 迁移至 Hexo，一个静态博客生成器。总体来看，我对博客程序的选择是越来越轻（zhuang）量（bi）化了。 目前，本博客已经完全迁移至 Hexo，包括所有的文章和主题。不过话说回来现在回头去看两年多前写的文章，真的挺尬的，行文风格完全不一样">
+<meta name="keywords" content="博客,Ghost,Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客已迁移至 Hexo">
+<meta property="og:url" content="https://blessing.studio/migrated-to-hexo/index.html">
+<meta property="og:site_name" content="Blessing Studio">
+<meta property="og:description" content="是的，我又双叒叕换博客程序了。 话是这样说，其实也没有很频繁啦，上一次从 WordPress 迁移至 Ghost 已经是一年多前的事了。这次是从 Ghost 迁移至 Hexo，一个静态博客生成器。总体来看，我对博客程序的选择是越来越轻（zhuang）量（bi）化了。 目前，本博客已经完全迁移至 Hexo，包括所有的文章和主题。不过话说回来现在回头去看两年多前写的文章，真的挺尬的，行文风格完全不一样">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-06-18T16:14:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="博客已迁移至 Hexo">
+<meta name="twitter:description" content="是的，我又双叒叕换博客程序了。 话是这样说，其实也没有很频繁啦，上一次从 WordPress 迁移至 Ghost 已经是一年多前的事了。这次是从 Ghost 迁移至 Hexo，一个静态博客生成器。总体来看，我对博客程序的选择是越来越轻（zhuang）量（bi）化了。 目前，本博客已经完全迁移至 Hexo，包括所有的文章和主题。不过话说回来现在回头去看两年多前写的文章，真的挺尬的，行文风格完全不一样">
+<meta name="twitter:creator" content="@printempw">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Blessing Studio">
+
+
+
+  <link rel="canonical" href="https://blessing.studio/migrated-to-hexo/"/>
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="icon" sizes="192x192" href="/images/icon.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/images/touch-icon.png" />
+
+
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/libs/fancybox/source/jquery.fancybox.css">
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Alegreya" />
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Alegreya+SC" />
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Roboto+Slab">
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=PT+Serif">
+
+
+    <title>博客已迁移至 Hexo - Blessing Studio</title>
+  </head>
+
+  <body lang="zh-CN">
+
+    <div id="pageframe" class="fw">
+      <script type="text/javascript" src="/js/nanobar.js"></script>
+<script type="text/javascript">
+    /* Initial NanoBar */
+    var nanobar = new Nanobar({
+        bg: "#BEDBEC",
+        target: document.getElementById("pageframe"),
+        id: "inb"
+    });
+</script>
+
+
+      <div id="top" class="fw clf">
+        <div id="header" class="wc center">
+  <div class="logo-container left">
+    
+    <div class="logo left">
+      <a href="https://blessing.studio"><img src="/images/logo.png"></a>
+    </div>
+  </div>
+
+  <div class="social right">
+    
+    <div class="ico right" id="tg-s"><a href="javascript:void()" class="fa fa-search"></a></div>
+    <form role="search" method="get" id="searchform-top" action="https://www.google.com/search">
+      <input type="hidden" name="sitesearch" value="https://blessing.studio">
+      <input type="text" name="q" id="s-top" placeholder="搜一搜 (ゝω·)☆ " />
+    </form>
+
+    
+    <div id="toggler" class="right">
+      
+        
+          <div class="ico">
+            <a href="https://twitter.com/printempw" target="_blank" title="twitter" class="fa fa-twitter"></a>
+          </div>
+        
+          <div class="ico">
+            <a href="https://github.com/printempw" target="_blank" title="github" class="fa fa-github"></a>
+          </div>
+        
+      
+      <div class="ico">
+        <a href="/atom.xml" target="_blank" class="fa fa-rss" ></a>
+      </div>
+    </div>
+
+    <div class="ico right" id="tg-m"><a href="javascript:;" class="fa fa-bars"></a></div>
+  </div>
+
+  <div class="topmenu left">
+    <div class="menu-container">
+      <ul class="menu">
+  
+    
+    <li class="menu-item menu-item-tech">
+      <a href="/categories/tech/" title="提高姿势水平" rel="section">
+      技术
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-archive">
+      <a href="/archives/" title="总览历史文章" rel="section">
+      归档
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-kaomoji">
+      <a href="javascript:void;" title="点我点我" rel="section">
+      (´・ω・`)
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+  <div class="left clf"></div>
+
+</div>
+
+      </div>
+
+      <div id="container" class="wc center clf page-post">
+        <script type="text/javascript">nanobar.go(20);</script>
+
+        <div id="content" class="wp">
+          
+
+  
+  <article class="post post-type-normal hentry">
+    <h1 class="post-title">
+      <a href="/migrated-to-hexo/">博客已迁移至 Hexo</a>
+    </h1>
+
+    
+      <script src="/js/dayjs.min.js"></script>
+
+<script>
+  var post_updated = dayjs("2017-06-18T16:14:00.000Z");
+  var days_diff_now = dayjs().diff(post_updated, 'days');
+
+  if (days_diff_now > 365) {
+    document.write(
+      '<div class="alert alert-warning expired-message">'+
+        '本文最后更新于 '+days_diff_now+' 天前（'+post_updated.format('YYYY-MM-DD')+'），'+
+        '其中的信息可能已经有所发展或者不再适用于现阶段。'+
+      '</div>'
+    );
+  }
+
+  if (days_diff_now > 1095) {
+    document.write(
+      '<div class="alert alert-info expired-message">'+
+        '你似乎正在查看一篇很久远的文章。<br>'+
+        '为了你这样的访客，我特地保留了我的历史博文。不要笑话过去的我，用温柔的目光看下去吧。'+
+      '</div>'
+    );
+  }
+</script>
+
+    
+
+    <div class="post-content">
+      
+      <div class="toc-container">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、动态博客的优点"><span class="toc-text">一、动态博客的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、Ghost-太鶸了，真的鶸"><span class="toc-text">二、Ghost 太鶸了，真的鶸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、市面上其他的动态博客"><span class="toc-text">三、市面上其他的动态博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、静态博客的优点"><span class="toc-text">四、静态博客的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、静态博客的缺点"><span class="toc-text">五、静态博客的缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、为啥不自己写个博客程序呢？"><span class="toc-text">六、为啥不自己写个博客程序呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、我依然坚持独立博客的理由"><span class="toc-text">七、我依然坚持独立博客的理由</span></a></li></ol>
+      </div>
+      
+      <p>是的，我又双叒叕换博客程序了。</p>
+<p>话是这样说，其实也没有很频繁啦，上一次从 <a href="https://blessing.studio/hello-ghost-goodbye-wordpress/">WordPress 迁移至 Ghost</a> 已经是一年多前的事了。这次是从 Ghost 迁移至 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>，一个静态博客生成器。总体来看，我对博客程序的选择是越来越轻<del>（zhuang）</del>量<del>（bi）</del>化了。</p>
+<p>目前，本博客已经完全迁移至 Hexo，包括所有的文章和主题。不过话说回来现在回头去看两年多前写的文章，真的挺尬的，行文风格完全不一样，超尬 (つд⊂) 目前我在用的这个主题（<a href="https://qaq.cat/kotori/100" target="_blank" rel="noopener">Seventeen</a>）已经陪了我快三年了，之前我把它从 WordPress 移植到 Ghost，现在到了 Hexo 我又把它给移植过来了，我也是爱得深沉啊（笑）</p>
+<p>既然现在迁移完成了，我打算列举一下我迁移的理由，算是个记录。</p>
+<h3 id="一、动态博客的优点"><a href="#一、动态博客的优点" class="headerlink" title="一、动态博客的优点"></a>一、动态博客的优点</h3><p>动态博客肯定是有一些静态博客所无法实现的优点的，不然我之前也不会一直使用动态博客，而没有考虑过使用静态博客了。</p>
+<ul>
+<li>动态博客功能强大，插件众多，甚至能当 CMS 用；</li>
+<li>数据存储基于数据库，灵活性强；</li>
+<li>有管理后台，发布、更新文章等操作方便；</li>
+<li>自带的附件、站内搜索、评论系统等功能。</li>
+</ul>
+<p>那我为毛要选择迁移至静态博客呢？</p>
+<a id="more"></a>
+<h3 id="二、Ghost-太鶸了，真的鶸"><a href="#二、Ghost-太鶸了，真的鶸" class="headerlink" title="二、Ghost 太鶸了，真的鶸"></a>二、Ghost 太鶸了，真的鶸</h3><p>在迁移之前，我使用的是 Ghost 这个基于 Node.js 构建的动态博客程序。</p>
+<p>我最开始选择它就是因为受够了臃肿的 WordPress 而看中了 Ghost 的简洁。但是这一年使用下来，我对 Ghost 的热情也渐渐冷却，对它感到不爽的地方也多了起来。说到底，作为一个普通的用户来看，我认为 Ghost 并没有实现多少<strong>「只有动态博客才能做到」</strong>的功能。</p>
+<ul>
+<li>孱弱的主题系统。是的，如果你开发过 Ghost 主题，你就会感到 Ghost 的主题功能是有多么的鶸（以下情况截止至 Ghost 的 0.11.9 版，即 2017-05-07，也许 Ghost 之后的版本会有所改善）。<ul>
+<li>在 Handlebars 模板中，你只能使用 Ghost 提供的有限变量，你甚至无法在 <a href="https://themes.ghost.org/v0.11.9/docs/if" target="_blank" rel="noopener">if statement</a> 中使用稍微复杂一些的表达式（当然，你也可以称赞这是遵循逻辑与视图分离）；</li>
+<li>用户自定义？不存在的，用户在不修改主题文件的前提下能修改的就只有博客标题、LOGO 等基本信息以及导航栏。而且导航栏标题中的 HTML 标签永远都会被转义，不修改 Ghost 源码关不掉，想放个图标都不行；</li>
+<li>小工具、换主题颜色、换 Schema？直接改主题或者 Ghost 的源码去吧，否则你没有任何方法为你的 Ghost 主题添加一个自定义配置文件，因为你根本读取不到。</li>
+</ul>
+</li>
+<li>没有原生评论系统，你必须和其他静态博客一样去使用如 Disqus、多说（已经倒闭了）之类的第三方评论系统；</li>
+<li>没有搜索功能。为什么你一个动态博客和静态博客一样不支持站内搜索？极简风？</li>
+<li>没有附件上传功能。好吧我也用不到这个，交给图床去做；</li>
+<li>不支持用户自行截取文章摘要，不<a href="https://blessing.studio/add-more-tag-for-ghost/">修改源码</a>无法实现类似 WordPress 的 <code>&lt;!--more--&gt;</code> 功能；</li>
+<li>虽是打着简洁轻便优美的名头，但是在我看来 Ghost 整体已经日渐臃肿，尤其是 1.0 Alpha 版，看源码看得我一个头两个大。当然，你也可以说是我太low，不懂它的架构优雅😀</li>
+<li>Markdown 支持不好，渲染经常出问题，而且连个表格都没得插；</li>
+</ul>
+<p>虽然 Ghost 有这么多不完善的地方，但毕竟人家还处在 0.x 的版本号阶段嘛，也不是不能理解，因此我也愿意继续使用它，等待它慢慢成长完善。但是后来我在试用 Ghost 1.0 Alpha 的早期版本时（当时 Alpha 页面上介绍的是 <em>Brand New Editor</em>，我挺心动的），我惊讶地发现 Ghost 团队在 Alpha 甚至做出了<strong>【取消 Markdown 编辑器改为普通富文本编辑器】</strong>的神奇决定……虽然半个月前的 <a href="https://github.com/TryGhost/Ghost/releases/tag/1.0.0-alpha.21" target="_blank" rel="noopener">Alpha.21</a> 已经重新回归了 markdown-only 编辑器，而且换了个新的 Markdown renderer（官方自己也承认原来的渲染器有着 <em>a whole heap of syntax bugs</em>）。但是很可惜，当我得知这条消息时，我已经完成了博客的迁移工作 ‾\_(ツ)_/‾</p>
+<h3 id="三、市面上其他的动态博客"><a href="#三、市面上其他的动态博客" class="headerlink" title="三、市面上其他的动态博客"></a>三、市面上其他的动态博客</h3><p>我也有想过换成其他的动态博客，但苦于找不到合适的。</p>
+<ul>
+<li><strong>WordPress</strong>：臃肿，运行速度慢，架构落后；</li>
+<li><strong>Typecho</strong>：速度什么的都很不错，但感觉架构不够现代化；</li>
+<li><strong>Canvas</strong>：够现代化了（基于 Laravel），但是运行速度屌慢，功能也不完善。</li>
+</ul>
+<h3 id="四、静态博客的优点"><a href="#四、静态博客的优点" class="headerlink" title="四、静态博客的优点"></a>四、静态博客的优点</h3><p>相比起动态博客，静态博客肯定是有一些它独有的优点的，不然我也不可能会考虑耗费时间精力去做迁移工作。</p>
+<ul>
+<li>文章以一个个纯文本文件保存，便于管理备份（Git 或者直接一股脑 zip）；</li>
+<li>可以直接用我喜欢的编辑器编辑博文（推荐 Typora，超好用）；</li>
+<li>生成的结果就是些静态页面，放哪里都行，托管、迁移也方便，不用耗费太多精力去维护；</li>
+<li>性能铁定比动态博客强（我就是因为性能问题而放弃了 WordPress）；</li>
+<li>安全性高，不用担心博客程序曝出各种 SQL 注入之类的漏洞（参见 WP）；</li>
+<li>我喜欢纯文本、Markdown，和简单优美的东西 :P</li>
+<li>Jekyll、Octopress、Hexo 等静态博客生成器的生态圈也很发达；</li>
+<li><del>静态博客 ZHUANG BI 啊</del></li>
+</ul>
+<h3 id="五、静态博客的缺点"><a href="#五、静态博客的缺点" class="headerlink" title="五、静态博客的缺点"></a>五、静态博客的缺点</h3><p>当然，静态博客也是有缺点的，不然大家都去用静态博客了。</p>
+<ul>
+<li>没有自带的评论系统（我用 Disqus）；</li>
+<li>没有自带的搜索功能（我直接用 Google 的 <code>site:</code> 搜索限定符）；</li>
+<li>没有后台，不能随时随地发表文章（毕业了，坐在电脑前的时间也多了）；</li>
+<li>操作复杂，难以上手，一般人玩不转（对于 Geek 来说当然小菜一碟）</li>
+</ul>
+<h3 id="六、为啥不自己写个博客程序呢？"><a href="#六、为啥不自己写个博客程序呢？" class="headerlink" title="六、为啥不自己写个博客程序呢？"></a>六、为啥不自己写个博客程序呢？</h3><p>其实我也不是没有想过啦。</p>
+<ul>
+<li>不想造轮子，现有的博客程序都挺好的；</li>
+<li>我自认为不需要通过写一个博客程序的方式来巩固我的知识以及展示「我会○○技能哦」，维护也麻烦。写个博客程序不难，但我希望写一些更有意义的玩意儿；</li>
+<li><strong>懒</strong>。</li>
+</ul>
+<h3 id="七、我依然坚持独立博客的理由"><a href="#七、我依然坚持独立博客的理由" class="headerlink" title="七、我依然坚持独立博客的理由"></a>七、我依然坚持独立博客的理由</h3><p>引用阮一峰老师所言<sup><a href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html" target="_blank" rel="noopener">[source]</a></sup>：</p>
+<blockquote>
+<p>喜欢写 Blog 的人，会经历三个阶段。</p>
+<p>第一阶段，刚接触 Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
+<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
+<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
+</blockquote>
+<p>三年过去了，目前我依然处于第二阶段。那我是为什么没有放弃独立博客呢？</p>
+<ul>
+<li>免费的静态站点托管服务（GitHub Pages、Coding Pages）总有不少限制和不便之处，而且免费的才是最贵的；</li>
+<li>至于收费托管服务……那为啥不自己买个 VPS 呢？还能跑其他程序；</li>
+<li>Medium、简书之类的平台虽然可以专注于写作，但是不好进行自定义与功能的添加，个性化功能过于局限，样式模板千篇一律，<del>不好装逼</del>；</li>
+<li>并没有觉得维护独立博客很麻烦，专注产出内容之余折腾下搭建、模板，也挺有意思的 ;)</li>
+</ul>
+<p>最后引用一句 <a href="https://www.farbox.com/" target="_blank" rel="noopener">Farbox</a> 首页上我很喜欢的一段话：</p>
+<blockquote>
+<p>博客的意义</p>
+<p>除了记录生活，博客让作者变得平静、幸福、以及更优秀，结交到性情相近的朋友，甚至让薪资涨幅超过不写博客的一些人。</p>
+</blockquote>
+
+      <div class="post-about"><p>除另有声明外，本博客文章均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">知识共享(Creative Commons) 署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a> 进行许可。</p></div>
+    </div>
+
+    <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/diary/">日常</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2017-06-18</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="migrated-to-hexo/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/Ghost/">Ghost</a>, <a class="tag-link" href="/tag/Hexo/">Hexo</a>, <a class="tag-link" href="/tag/博客/">博客</a>
+    
+  </span>
+</div>
+
+  </article>
+
+  
+    <div class="disqus"></div>
+
+<p class="disqus-notice hentry"  style="display: none;">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>  如果评论框加载不出来，那就说明 Disqus 被墙了，你看着办吧 |ー` )
+</p>
+
+  
+
+        </div>
+
+        
+<div id="sidebar" class="fl">
+
+  
+
+  <div id="abovesb">
+    <div class="card">
+      <div class="gr center">
+        
+        <style> .gr:hover > img { opacity: initial; } </style>
+        
+        <img src="/images/avatar.jpg" width="112" height="112">
+      </div>
+
+      <div class="blogname">Blessing Studio</div>
+      <div class="blogdesc">半吊子全栈开发者的日常</div>
+
+      <div class="sbmenu">
+        <div class="menu-container">
+          <ul class="menu">
+  
+    
+    <li class="menu-item menu-item-friends">
+      <a href="/friends" title="友情链接" rel="section">
+        <i class="fa fa-link"></i>我的小伙伴们
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-about">
+      <a href="/about" title="(*ﾟ∀ﾟ*)" rel="section">
+        <i class="fa fa-code"></i>关于我
+      </a>
+    </li>
+  
+</ul>
+
+        </div>
+      </div>
+    </div>
+    
+    <div id="music-player" class="aplayer hide rotated"></div>
+  </div>
+
+  <script type="text/javascript">nanobar.go(40);</script>
+
+  <div id="sb">
+    
+<div id="sbpin">
+  
+  
+  <div class="clf widget-item widget-toc">
+    <h3 class="widget-title">文章目录</h3>
+    <div class="textwidget">
+      <div class="toc-container">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、动态博客的优点"><span class="toc-text">一、动态博客的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、Ghost-太鶸了，真的鶸"><span class="toc-text">二、Ghost 太鶸了，真的鶸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、市面上其他的动态博客"><span class="toc-text">三、市面上其他的动态博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、静态博客的优点"><span class="toc-text">四、静态博客的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、静态博客的缺点"><span class="toc-text">五、静态博客的缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、为啥不自己写个博客程序呢？"><span class="toc-text">六、为啥不自己写个博客程序呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、我依然坚持独立博客的理由"><span class="toc-text">七、我依然坚持独立博客的理由</span></a></li></ol>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  <div class="clf widget-item widget_text">
+    <div class="textwidget">
+      <script type="text/javascript" src="https://work.prinzeugen.net/hitokoto/hitokoto.php?encode=javascript"></script>
+      <p id="hitokoto"><script>hitokoto();</script></p>
+    </div>
+  </div>
+  
+
+  
+  
+
+</div>
+
+  </div>
+</div>
+
+
+      </div><!-- #container -->
+
+      <div id="foot" class="fw">
+        <div id="bottom" class="fw">
+  <div id="footer" class="wc center clf">
+    <div class="info">
+      <p>Copyleft 2018 <a href="https://blessing.studio">Blessing Studio</a>. Proudly published with <a href="https://hexo.io/" target="_blank">Hexo</a>. Made with ❤ by printempw.</p>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+    </div><!-- #pageframe.fw -->
+    <script type="text/javascript">nanobar.go(80);</script>
+
+    <div class="back-to-top">
+      <span class="fa fa-angle-up"></span>
+    </div>
+
+    <script src="/js/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.libs.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/libs/fancybox/source/jquery.fancybox.pack.js"></script>
+<script src="/js/script.js"></script>
+
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65656002-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    <style type="text/css">
+    .menu-item-kaomoji a {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .info-rise {
+        z-index: 99999;
+        position: absolute;
+        padding: 0 4px;
+        border-radius: 1px;
+        background-color: #f69;
+        box-shadow: 0 0 1px rgba(0,0,0,0.1);
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.5;
+        cursor: default
+    }
+</style>
+
+<script type="text/javascript">
+    var kaomoji_array = ["|∀ﾟ", "(´ﾟДﾟ`)", "(;´Д`)", "(｀･ω･)", "(=ﾟωﾟ)=", "| ω・´)", "|-` )", "|д` )", "|ー` )", "|∀` )", "(つд⊂)", "(ﾟДﾟ≡ﾟДﾟ)", "(＾o＾)ﾉ", "(|||ﾟДﾟ)", "( ﾟ∀ﾟ)", "( ´∀`)", "(*´∀`)", "(*ﾟ∇ﾟ)", "(*ﾟーﾟ)", "(　ﾟ 3ﾟ)", "( ´ー`)", "( ・_ゝ・)", "( ´_ゝ`)", "(*´д`)", "(・ー・)", "(・∀・)", "(ゝ∀･)", "(〃∀〃)", "(*ﾟ∀ﾟ*)", "( ﾟ∀。)", "( `д´)", "(`ε´ )", "(`ヮ´ )", "σ`∀´)", " ﾟ∀ﾟ)σ", "ﾟ ∀ﾟ)ノ", "(╬ﾟдﾟ)", "(|||ﾟдﾟ)", "( ﾟдﾟ)", "Σ( ﾟдﾟ)", "( ;ﾟдﾟ)", "( ;´д`)", "(　д ) ﾟ ﾟ", "( ☉д⊙)", "(((　ﾟдﾟ)))", "( ` ・´)", "( ´д`)", "( -д-)", "(>д<)", "･ﾟ( ﾉд`ﾟ)", "( TдT)", "(￣∇￣)", "(￣3￣)", "(￣ｰ￣)", "(￣ . ￣)", "(￣皿￣)", "(￣艸￣)", "(￣︿￣)", "(￣︶￣)", "ヾ(´ωﾟ｀)", "(*´ω`*)", "(・ω・)", "( ´・ω)", "(｀・ω)", "(´・ω・`)", "(`・ω・´)", "( `_っ´)", "( `ー´)", "( ´_っ`)", "( ´ρ`)", "( ﾟωﾟ)", "(oﾟωﾟo)", "(　^ω^)", "(｡◕∀◕｡)", "/( ◕‿‿◕ )\\", "ヾ(´ε`ヾ)", "(ノﾟ∀ﾟ)ノ", "(σﾟдﾟ)σ", "(σﾟ∀ﾟ)σ", "|дﾟ )", "┃電柱┃", "ﾟ(つд`ﾟ)", "ﾟÅﾟ )　", "⊂彡☆))д`)", "⊂彡☆))д´)", "⊂彡☆))∀`)", "(´∀((☆ミつ"];
+    var hits = 0;
+    var start_time = 0;
+
+    $('.menu-item-kaomoji a').click(function(e) {
+
+        if (start_time == 0) start_time = Date.now();
+
+        hits ++;
+
+        if (hits % 5 === 0) {
+            index = Math.floor(Math.random() * kaomoji_array.length);
+            $(this).html(kaomoji_array[index]);
+        }
+
+        x = $(this).offset().left + $(this).width();
+        y = $(this).offset().top + $(this).height();
+
+        if (hits % 50 === 0) {
+            var duration = 2000;
+            // actions per minite
+            var apm = parseInt(hits / ((Date.now() - start_time) / 1000) * 60);
+            start_time = 0;
+            hits = 0;
+            hit = $('<span class="info-rise" style="border: 1px solid #ffd6e4;font-size:13.5px;z-index:9999999;">手速：'+apm+' actions/min </span>');
+
+            console.log('APM: '+apm);
+        } else {
+            var duration = 500;
+            hit = $('<span class="info-rise">+1</span>');
+        }
+
+        hit.appendTo($("body"));
+
+        hit.css({
+            opacity: 0,
+            left: x,
+            top: y
+        }).animate({
+            opacity: 1,
+            top: y - 16
+        }, 250).animate({
+            opacity: 1,
+            top: y - 20
+        }, duration).animate({
+            top: y - 20
+        }, duration).animate({
+            opacity: 0,
+            top: y - 32
+        }, 250, function() {
+            return $(this).remove();
+        });
+
+    });
+</script>
+
+    <style type="text/css">
+    .p-load-gist {
+        margin: 25px 0 25px !important;
+        text-align: center;
+    }
+</style>
+
+<script type="text/javascript">
+    $('.load-gist').on('click', function() {
+        var gist = {
+            url: '//work.prinzeugen.net/gist/printempw/' + $(this).data('hash') + '.json?callback=?',
+            dom: this
+        };
+
+        $.getJSON(gist.url, function(data) {
+            gist.style      = document.createElement('link');
+            gist.style.type = 'text/css';
+            gist.style.rel  = 'stylesheet';
+            gist.style.href = data.stylesheet;
+
+            document.getElementsByTagName('HEAD')[0].appendChild(gist.style);
+
+            $(gist.dom).after(data.div).remove();
+        });
+    });
+</script>
+
+
+    
+      <script type="text/javascript">
+    String.prototype.cleanSlug = function () {
+        var search = '/index.html';
+
+        if (this.indexOf(search) === -1) {
+            return this.slice(0, -1)
+        } else {
+            return this.replace(search, '');
+        }
+    }
+
+    var Counter = function (url) {
+        this.baseCounterUrl = url;
+
+        this.initAllPostViews = function () {
+            var self = this;
+
+            // 遍历 post-view
+            $('[id=post-view]').each(function () {
+                // 默认 PV 设为 0
+                var span = $(this).html(0);
+                var slug = span.attr('data').cleanSlug();
+
+                self.getPostViewBySlug(slug, function (pv) {
+                    span.html(pv);
+                })
+            });
+        }
+
+        this.getPostViewBySlug = function (slug, callback) {
+            var url = this.baseCounterUrl + '/get/' + slug;
+
+            $.getJSON(url, function (data) {
+                callback(data.pv);
+            });
+        }
+
+        this.incPostViewBySlug = function (slug) {
+            var url = this.baseCounterUrl + '/increase/' + slug;
+
+            $.post(url, {}, function (data) {
+                $('#post-view').html(data.pv);
+            });
+        }
+    }
+
+    var counter = new Counter('https://work.prinzeugen.net/hexo-view-counter');
+
+    $(document).ready(function () {
+        counter.initAllPostViews();
+    });
+</script>
+
+
+<script type="text/javascript">
+    counter.incPostViewBySlug(
+        $('#post-view').attr('data').cleanSlug()
+    );
+</script>
+
+
+    
+
+    
+
+    
+  <script src="/js/jquery.disqusloader.js"></script>
+
+<script type="text/javascript">
+  $.disqusLoader('.disqus', {
+    scriptUrl: '//blessing-studio.disqus.com/embed.js',
+    laziness: 0,
+    preLoadCallback: function () {
+        $('.disqus-notice').show()
+    },
+    disqusConfig: function () {
+      this.callbacks.onReady = [function () {
+        $('.disqus-notice').hide()
+      }];
+    }
+  });
+</script>
+
+
+
+    <script type="text/javascript">nanobar.go(100);</script>
+  </body>
+</html>

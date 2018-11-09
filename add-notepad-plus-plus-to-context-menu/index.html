@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+<meta name="theme-color" content="#3C8DBC">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="HandheldFriendly" content="True" />
+
+
+<meta name="description" content="这里是 @printempw 的个人博客，基本上啥都写：开发心得分享，日常吐槽吹逼，偶尔也会写正经文字，欢迎订阅。" />
+
+  <meta name="keywords" content="记录,Windows," />
+
+
+
+
+
+
+<meta name="google-site-verification" content="WUNRfYChNMDduwLOFHG41TsVrre6BOaI7jKshEvtRts" />
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta name="generator" content="Hexo" />
+
+
+<meta name="description" content="作为一名即将开学的计算机系 准大学生，笔记本电脑总归是要有一台的。于是上星期我入手了 小米游戏本顶配版（i7-8750H + 16G + GTX 1066），最近正在重新折腾开发环境，这篇文章要解决的问题也是在此过程中出现的。 至于为什么要买小米的本子，主要是因为它的「游戏本性能 + 商务本外观」这一点正戳中我好球区。不过这几天使用下来，只能说缺点确实不少，有购买意愿的朋友需谨慎。在 Twitte">
+<meta name="keywords" content="记录,Windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="添加 Notepad++ 至右键菜单的几种方法">
+<meta property="og:url" content="https://blessing.studio/add-notepad-plus-plus-to-context-menu/index.html">
+<meta property="og:site_name" content="Blessing Studio">
+<meta property="og:description" content="作为一名即将开学的计算机系 准大学生，笔记本电脑总归是要有一台的。于是上星期我入手了 小米游戏本顶配版（i7-8750H + 16G + GTX 1066），最近正在重新折腾开发环境，这篇文章要解决的问题也是在此过程中出现的。 至于为什么要买小米的本子，主要是因为它的「游戏本性能 + 商务本外观」这一点正戳中我好球区。不过这几天使用下来，只能说缺点确实不少，有购买意愿的朋友需谨慎。在 Twitte">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.blessing.studio/images/2018/08/29/npp-context-menu-demo.png">
+<meta property="og:image" content="https://img.blessing.studio/images/2018/08/29/regsrv32-i-nppshell-dll.png">
+<meta property="og:image" content="https://img.blessing.studio/images/2018/08/29/npp-send-to-menu.png">
+<meta property="og:updated_time" content="2018-08-28T18:35:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="添加 Notepad++ 至右键菜单的几种方法">
+<meta name="twitter:description" content="作为一名即将开学的计算机系 准大学生，笔记本电脑总归是要有一台的。于是上星期我入手了 小米游戏本顶配版（i7-8750H + 16G + GTX 1066），最近正在重新折腾开发环境，这篇文章要解决的问题也是在此过程中出现的。 至于为什么要买小米的本子，主要是因为它的「游戏本性能 + 商务本外观」这一点正戳中我好球区。不过这几天使用下来，只能说缺点确实不少，有购买意愿的朋友需谨慎。在 Twitte">
+<meta name="twitter:image" content="https://img.blessing.studio/images/2018/08/29/npp-context-menu-demo.png">
+<meta name="twitter:creator" content="@printempw">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Blessing Studio">
+
+
+
+  <link rel="canonical" href="https://blessing.studio/add-notepad-plus-plus-to-context-menu/"/>
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="icon" sizes="192x192" href="/images/icon.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/images/touch-icon.png" />
+
+
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/libs/fancybox/source/jquery.fancybox.css">
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Alegreya" />
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Alegreya+SC" />
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Roboto+Slab">
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=PT+Serif">
+
+
+    <title>添加 Notepad++ 至右键菜单的几种方法 - Blessing Studio</title>
+  </head>
+
+  <body lang="zh-CN">
+
+    <div id="pageframe" class="fw">
+      <script type="text/javascript" src="/js/nanobar.js"></script>
+<script type="text/javascript">
+    /* Initial NanoBar */
+    var nanobar = new Nanobar({
+        bg: "#BEDBEC",
+        target: document.getElementById("pageframe"),
+        id: "inb"
+    });
+</script>
+
+
+      <div id="top" class="fw clf">
+        <div id="header" class="wc center">
+  <div class="logo-container left">
+    
+    <div class="logo left">
+      <a href="https://blessing.studio"><img src="/images/logo.png"></a>
+    </div>
+  </div>
+
+  <div class="social right">
+    
+    <div class="ico right" id="tg-s"><a href="javascript:void()" class="fa fa-search"></a></div>
+    <form role="search" method="get" id="searchform-top" action="https://www.google.com/search">
+      <input type="hidden" name="sitesearch" value="https://blessing.studio">
+      <input type="text" name="q" id="s-top" placeholder="搜一搜 (ゝω·)☆ " />
+    </form>
+
+    
+    <div id="toggler" class="right">
+      
+        
+          <div class="ico">
+            <a href="https://twitter.com/printempw" target="_blank" title="twitter" class="fa fa-twitter"></a>
+          </div>
+        
+          <div class="ico">
+            <a href="https://github.com/printempw" target="_blank" title="github" class="fa fa-github"></a>
+          </div>
+        
+      
+      <div class="ico">
+        <a href="/atom.xml" target="_blank" class="fa fa-rss" ></a>
+      </div>
+    </div>
+
+    <div class="ico right" id="tg-m"><a href="javascript:;" class="fa fa-bars"></a></div>
+  </div>
+
+  <div class="topmenu left">
+    <div class="menu-container">
+      <ul class="menu">
+  
+    
+    <li class="menu-item menu-item-tech">
+      <a href="/categories/tech/" title="提高姿势水平" rel="section">
+      技术
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-archive">
+      <a href="/archives/" title="总览历史文章" rel="section">
+      归档
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-kaomoji">
+      <a href="javascript:void;" title="点我点我" rel="section">
+      (´・ω・`)
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+  <div class="left clf"></div>
+
+</div>
+
+      </div>
+
+      <div id="container" class="wc center clf page-post">
+        <script type="text/javascript">nanobar.go(20);</script>
+
+        <div id="content" class="wp">
+          
+
+  
+  <article class="post post-type-normal hentry">
+    <h1 class="post-title">
+      <a href="/add-notepad-plus-plus-to-context-menu/">添加 Notepad++ 至右键菜单的几种方法</a>
+    </h1>
+
+    
+      <script src="/js/dayjs.min.js"></script>
+
+<script>
+  var post_updated = dayjs("2018-08-28T18:35:05.000Z");
+  var days_diff_now = dayjs().diff(post_updated, 'days');
+
+  if (days_diff_now > 365) {
+    document.write(
+      '<div class="alert alert-warning expired-message">'+
+        '本文最后更新于 '+days_diff_now+' 天前（'+post_updated.format('YYYY-MM-DD')+'），'+
+        '其中的信息可能已经有所发展或者不再适用于现阶段。'+
+      '</div>'
+    );
+  }
+
+  if (days_diff_now > 1095) {
+    document.write(
+      '<div class="alert alert-info expired-message">'+
+        '你似乎正在查看一篇很久远的文章。<br>'+
+        '为了你这样的访客，我特地保留了我的历史博文。不要笑话过去的我，用温柔的目光看下去吧。'+
+      '</div>'
+    );
+  }
+</script>
+
+    
+
+    <div class="post-content">
+      
+      <div class="toc-container">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法一：使用官方提供的-NppShell-dll"><span class="toc-text">方法一：使用官方提供的 NppShell.dll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法二：手动修改注册表"><span class="toc-text">方法二：手动修改注册表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法三：手动修改注册表-使用-Context-Menu-Handler"><span class="toc-text">方法三：手动修改注册表 - 使用 Context Menu Handler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法四：使用「发送到」快捷方式"><span class="toc-text">方法四：使用「发送到」快捷方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+      </div>
+      
+      <p>作为一名即将开学的计算机系 <a href="https://blessing.studio/check-in-2018-07/">准大学生</a>，笔记本电脑总归是要有一台的。于是上星期我入手了 <a href="https://twitter.com/printempw/status/1030043615983104000" target="_blank" rel="noopener">小米游戏本顶配版</a>（i7-8750H + 16G + GTX 1066），最近正在重新折腾开发环境，这篇文章要解决的问题也是在此过程中出现的。</p>
+<p>至于为什么要买小米的本子，主要是因为它的「游戏本性能 + 商务本外观」这一点正戳中我好球区。不过这几天使用下来，只能说缺点确实不少，有购买意愿的朋友需谨慎。在 Twitter 上搜索 <code>小米游戏本 from:printempw</code> 就能看到我发的吐槽简评，如果之后有时间的话也打算专门写篇评测（咕咕咕）。</p>
+<p>回到正题。因为以前家里的电脑是全家共用的所以没什么，不过最近有了自己的电脑，我的软件洁癖就上来了：<strong>有<a href="https://zh.wikipedia.org/wiki/%E7%B6%A0%E8%89%B2%E8%BB%9F%E9%AB%94" target="_blank" rel="noopener">绿色版</a>（便携软件，Portable Application）的绝不用安装版，国产软件一律扔沙盒运行。</strong></p>
+<p>看起来有点偏执，不过我就属于那种想把自己设备中的一切纳入可控范围内的人。Windows 在这点上就很讨厌，尤其是注册表的设计，比类 Unix 系统难管理了不是一点半点。在手机上也是一样，不能解锁 bootloader 的 Android 机器我绝对不会购买，AppOps、Magisk、<a href="https://play.google.com/store/apps/details?id=moe.shizuku.redirectstorage" target="_blank" rel="noopener">存储重定向</a> 等工具更是必备。虽然我也没偏执到「每条指令运行都需要我的许可」那种程度，不过至少，我的设备必须听我的话，我说什么不能做那就是不能做，你他娘的不能给我自作主张（比如 Windows <a href="https://www.zhihu.com/question/271414438" target="_blank" rel="noopener">广受诟病的自动更新机制</a>、某些臭名昭著的国产软件扫描用户硬盘等）。为什么？<strong>因为是我在用电脑，不是电脑用我。</strong></p>
+<p>好了言归正传（没错，本博客就是有在进入正题之前瞎扯一通的习惯）。</p>
+<p><a href="https://notepad-plus-plus.org/" target="_blank" rel="noopener">Notepad++</a> 是一款我很喜欢的文本编辑器，除了写代码和写文章外的一般文本编辑工作我都是使用它完成的，配置新电脑时自然不能少了它。我下载的是 Portable 便携版，不过也正因如此，原本在 Installer 中通过选项可以添加的 <em>Edit with Notepad++</em> 右键菜单项也没有了（此操作需要写注册表）。</p>
+<p>因为这个右键菜单还蛮好用的，所以我打算把它找回来。</p>
+<p><img src="https://img.blessing.studio/images/2018/08/29/npp-context-menu-demo.png" alt="npp-context-menu-demo"></p>
+<a id="more"></a>
+<h2 id="方法一：使用官方提供的-NppShell-dll"><a href="#方法一：使用官方提供的-NppShell-dll" class="headerlink" title="方法一：使用官方提供的 NppShell.dll"></a>方法一：使用官方提供的 NppShell.dll</h2><p>此方法来自 Notepad++ 的官方 Wiki（见底部参考链接）。</p>
+<p>添加右键菜单项需要修改注册表，除了手动修改注册表，Notepad++ 官方还提供了一个 DLL 文件用于注册以及卸载右键菜单。如果你使用的是安装版，那么在程序目录下应该会有一个 <code>NppShell_06.dll</code> 文件（不同版本下文件名中的数字可能会不同）；如果没有或者是便携版，那么请在这里下载该文件：</p>
+<p><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/tree/master/PowerEditor/bin" target="_blank" rel="noopener">https://github.com/notepad-plus-plus/notepad-plus-plus/tree/master/PowerEditor/bin</a></p>
+<p>上面的地址是 Notepad++ 官方 GitHub 仓库中提供的预编译 DLL，32 位系统的用户请下载 <code>NppShell.dll</code>，64 位系统的请下载 <code>NppShell64.dll</code>。不要吐槽为啥这文件四年没更新了，因为人家确实是四年没更新了，Wiki 原文中提供的链接还是八年前的呢（笑）。</p>
+<p>下载后，打开一个具有管理员权限的 <code>cmd.exe</code> 或者 PowerShell，cd 到 Notepad++ 的安装目录（直接指定 DLL 的绝对路径是没用的，必须在程序目录下运行），并运行如下命令（文件名自行替换）：</p>
+<pre><code class="powershell">regsvr32 /i NppShell64.dll
+</code></pre>
+<p>运行后会弹出一个对话框，直接点 OK 就可以了。</p>
+<p>如果没给管理员权限，会报错「模块 NppShell64.dll 已加载，但对 DllRegisterServer 的调用失败」。</p>
+<p><img src="https://img.blessing.studio/images/2018/08/29/regsrv32-i-nppshell-dll.png" alt="regsrv32-i-nppshell-dll"></p>
+<p>如果要删除右键菜单，请运行：</p>
+<pre><code class="powershell">regsvr32 /u NppShell64.dll
+</code></pre>
+<p>如果你不会运行这些命令也没事，将以下内容使用记事本保存为 <code>.bat</code> 文件，放到 Notepad++ 的安装目录下，右键「以管理员身份运行」即可（此脚本修改自：<a href="http://www.ok12.net/?post=31" target="_blank" rel="noopener">Notepad++ 添加右键打开菜单 - 成功志</a>）。</p>
+<pre><code class="cmd">@Echo Off
+cd /d %~dp0
+title Notepad++ 右键菜单添加/删除工具
+
+SetLocal EnableDelayedExpansion
+echo 1. 添加 Notepad++ 右键菜单
+echo ------------------------
+echo 2. 删除 Notepad++ 右键菜单
+echo ------------------------
+
+Set /p u=请输入数字并按 Enter 确定：
+
+If &quot;%u%&quot;==&quot;1&quot; Goto regnpp
+If &quot;%u%&quot;==&quot;2&quot; Goto unregnpp
+
+:regnpp
+regsvr32 /i NppShell64.dll
+exit
+
+:unregnpp
+regsvr32 /u NppShell64.dll
+exit
+</code></pre>
+<h2 id="方法二：手动修改注册表"><a href="#方法二：手动修改注册表" class="headerlink" title="方法二：手动修改注册表"></a>方法二：手动修改注册表</h2><p>如果你不想用上面的那个方法，也可以自己手动修改注册表。</p>
+<p>修改注册表添加右键菜单项有两种方法，这里先介绍简单点的方法。</p>
+<p>将以下内容保存为 <code>.reg</code> 文件，双击运行即可（其中可执行文件路径和菜单项名称请自行替换）：</p>
+<pre><code>Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\NotePad++]
+@=&quot;Edit with &amp;Notepad++&quot;
+&quot;Icon&quot;=&quot;C:\\Portable\\notepad-pp\\notepad++.exe&quot;
+
+[HKEY_CLASSES_ROOT\*\shell\NotePad++\Command]
+@=&quot;C:\\Portable\\notepad-pp\\notepad++.exe \&quot;%1\&quot;&quot;
+</code></pre><p>如果要删除右键菜单，也是一样的道理：</p>
+<pre><code>Windows Registry Editor Version 5.00
+
+[-HKEY_CLASSES_ROOT\*\shell\NotePad++]
+</code></pre><h2 id="方法三：手动修改注册表-使用-Context-Menu-Handler"><a href="#方法三：手动修改注册表-使用-Context-Menu-Handler" class="headerlink" title="方法三：手动修改注册表 - 使用 Context Menu Handler"></a>方法三：手动修改注册表 - 使用 Context Menu Handler</h2><p>Windows 下添加项目至文件的右键菜单有两种方式，一种是上面提到的直接往注册表 <code>HKEY_CLASSES_ROOT\{file_type}\shell</code> 里面加东西，另外一种更牛逼一点，需要注册 Context Menu Handlers。</p>
+<p>怎么个牛逼法呢？简单来说，Windows 会在显示右键菜单之前调用注册的 handler，handler 可以动态地修改右键菜单的内容，从而实现更加灵活的自定义，而不像上一种方法那样只能写死（比如说各种压缩软件在不同文件上的右键菜单项文本都是不同的）。有兴趣的同学可以去看看 <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/cc144169%28v=vs.85%29.aspx" target="_blank" rel="noopener">MSDN 文档</a>（反正我对 Win32 开发是没兴趣，不仅文档繁杂，Windows 的注册表也让我很讨厌，看着就烦）。</p>
+<p>回到正题。开头提到的 NppShell.dll 也是使用 Context Menu Handler 实现的，我从 <a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/tools/NppShell/src/NppShell.cpp" target="_blank" rel="noopener">源码</a> 里把其添加的注册表项扒出来了，使用方法和上一节一样（如果你是 32 位的系统，请将下面的 <code>{B298D29A-A6ED-11DE-BA8C-A68E55D89593}</code> 替换为 <code>{00F3C2EC-A6EE-11DE-A03A-EF8F55D89593}</code>）：</p>
+<pre><code>Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\CLSID\{B298D29A-A6ED-11DE-BA8C-A68E55D89593}]
+@=&quot;ANotepad++64&quot;
+
+[HKEY_CLASSES_ROOT\CLSID\{B298D29A-A6ED-11DE-BA8C-A68E55D89593}\InprocServer32]
+@=&quot;C:\\Portable\\notepad-pp\\notepad++.exe&quot;
+&quot;ThreadingModel&quot;=&quot;Apartment&quot;
+
+[HKEY_CLASSES_ROOT\CLSID\{B298D29A-A6ED-11DE-BA8C-A68E55D89593}\Settings]
+&quot;Title&quot;=&quot;Edit with &amp;Notepad++&quot;
+&quot;Path&quot;=&quot;C:\\Portable\\notepad-pp\\notepad++.exe&quot;
+&quot;Custom&quot;=&quot;&quot;
+&quot;ShowIcon&quot;=dword:00000001
+&quot;Dynamic&quot;=dword:00000001
+&quot;Maxtext&quot;=dword:00000019
+
+[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\ANotepad++64]
+@=&quot;{B298D29A-A6ED-11DE-BA8C-A68E55D89593}&quot;
+</code></pre><p>如果你要删除右键菜单，同理：</p>
+<pre><code>Windows Registry Editor Version 5.00
+
+[-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\Notepad++64]
+[-HKEY_CLASSES_ROOT\CLSID\{B298D29A-A6ED-11DE-BA8C-A68E55D89593}]
+</code></pre><h2 id="方法四：使用「发送到」快捷方式"><a href="#方法四：使用「发送到」快捷方式" class="headerlink" title="方法四：使用「发送到」快捷方式"></a>方法四：使用「发送到」快捷方式</h2><p>看到这里，有些人可能会吐槽：你这都改注册表了，还绿色软件个毛线啊！</p>
+<p>呃，好吧，无法反驳。🤔</p>
+<p>对于那些不愿意修改注册表，又想通过右键菜单便捷打开 Notepad++ 的选手，这里有一个不错的方法：使用 Windows 自带的「发送到」功能。</p>
+<p>首先在资源管理器的地址栏中输入 <code>shell:sendto</code> 并回车，你会被重定向至 <code>C:\Users\{username}\AppData\Roaming\Microsoft\Windows\SendTo</code> 目录。在此目录下建立一个到 <code>notepad++.exe</code> 的快捷方式，你就可以通过右键菜单中的「发送到」实现同样的功能。</p>
+<p>虽然比直接添加右键菜单要多操作一步，不过我倒觉得这样更简单优雅。另外，这一技巧也同样适用于其他应用程序，大家可以记一下哦。;)</p>
+<p><img src="https://img.blessing.studio/images/2018/08/29/npp-send-to-menu.png" alt="npp-send-to-menu"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我对 Win32 开发不熟，上面那些都是现学现卖的，如有口胡还请告知。</p>
+<p>参考链接：</p>
+<ul>
+<li><a href="http://docs.notepad-plus-plus.org/index.php/Explorer_Context_Menu" target="_blank" rel="noopener">Adding Notepad++ to the context menu of the Windows file manager</a></li>
+<li><a href="https://www.cnblogs.com/mq0036/p/3815728.html" target="_blank" rel="noopener">给 Notepad++ 加右键菜单带图标</a></li>
+<li><a href="http://www.catmee.com/add-context-menu-for-notepad-plus-plus/" target="_blank" rel="noopener">为 Notepad++ 添加带图标的右键菜单</a></li>
+<li><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/tools/NppShell/src/NppShell.cpp" target="_blank" rel="noopener">notepad-plus-plus/PowerEditor/src/tools/NppShell/src/NppShell.cpp</a></li>
+<li><a href="http://blog.darkthread.net/post-2017-06-05-open-notepad-with-contextmenu.aspx" target="_blank" rel="noopener">檔案總管右鍵選單開啟免安裝版 Notepad++</a></li>
+</ul>
+<p>以上。</p>
+
+      <div class="post-about"><p>除另有声明外，本博客文章均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">知识共享(Creative Commons) 署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a> 进行许可。</p></div>
+    </div>
+
+    <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/tech/">技术</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2018-08-29</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="add-notepad-plus-plus-to-context-menu/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/Windows/">Windows</a>, <a class="tag-link" href="/tag/记录/">记录</a>
+    
+  </span>
+</div>
+
+  </article>
+
+  
+    <div class="disqus"></div>
+
+<p class="disqus-notice hentry"  style="display: none;">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>  如果评论框加载不出来，那就说明 Disqus 被墙了，你看着办吧 |ー` )
+</p>
+
+  
+
+        </div>
+
+        
+<div id="sidebar" class="fl">
+
+  
+
+  <div id="abovesb">
+    <div class="card">
+      <div class="gr center">
+        
+        <style> .gr:hover > img { opacity: initial; } </style>
+        
+        <img src="/images/avatar.jpg" width="112" height="112">
+      </div>
+
+      <div class="blogname">Blessing Studio</div>
+      <div class="blogdesc">半吊子全栈开发者的日常</div>
+
+      <div class="sbmenu">
+        <div class="menu-container">
+          <ul class="menu">
+  
+    
+    <li class="menu-item menu-item-friends">
+      <a href="/friends" title="友情链接" rel="section">
+        <i class="fa fa-link"></i>我的小伙伴们
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-about">
+      <a href="/about" title="(*ﾟ∀ﾟ*)" rel="section">
+        <i class="fa fa-code"></i>关于我
+      </a>
+    </li>
+  
+</ul>
+
+        </div>
+      </div>
+    </div>
+    
+    <div id="music-player" class="aplayer hide rotated"></div>
+  </div>
+
+  <script type="text/javascript">nanobar.go(40);</script>
+
+  <div id="sb">
+    
+<div id="sbpin">
+  
+  
+  <div class="clf widget-item widget-toc">
+    <h3 class="widget-title">文章目录</h3>
+    <div class="textwidget">
+      <div class="toc-container">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法一：使用官方提供的-NppShell-dll"><span class="toc-text">方法一：使用官方提供的 NppShell.dll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法二：手动修改注册表"><span class="toc-text">方法二：手动修改注册表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法三：手动修改注册表-使用-Context-Menu-Handler"><span class="toc-text">方法三：手动修改注册表 - 使用 Context Menu Handler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法四：使用「发送到」快捷方式"><span class="toc-text">方法四：使用「发送到」快捷方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  <div class="clf widget-item widget_text">
+    <div class="textwidget">
+      <script type="text/javascript" src="https://work.prinzeugen.net/hitokoto/hitokoto.php?encode=javascript"></script>
+      <p id="hitokoto"><script>hitokoto();</script></p>
+    </div>
+  </div>
+  
+
+  
+  
+
+</div>
+
+  </div>
+</div>
+
+
+      </div><!-- #container -->
+
+      <div id="foot" class="fw">
+        <div id="bottom" class="fw">
+  <div id="footer" class="wc center clf">
+    <div class="info">
+      <p>Copyleft 2018 <a href="https://blessing.studio">Blessing Studio</a>. Proudly published with <a href="https://hexo.io/" target="_blank">Hexo</a>. Made with ❤ by printempw.</p>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+    </div><!-- #pageframe.fw -->
+    <script type="text/javascript">nanobar.go(80);</script>
+
+    <div class="back-to-top">
+      <span class="fa fa-angle-up"></span>
+    </div>
+
+    <script src="/js/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.libs.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/libs/fancybox/source/jquery.fancybox.pack.js"></script>
+<script src="/js/script.js"></script>
+
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65656002-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    <style type="text/css">
+    .menu-item-kaomoji a {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .info-rise {
+        z-index: 99999;
+        position: absolute;
+        padding: 0 4px;
+        border-radius: 1px;
+        background-color: #f69;
+        box-shadow: 0 0 1px rgba(0,0,0,0.1);
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.5;
+        cursor: default
+    }
+</style>
+
+<script type="text/javascript">
+    var kaomoji_array = ["|∀ﾟ", "(´ﾟДﾟ`)", "(;´Д`)", "(｀･ω･)", "(=ﾟωﾟ)=", "| ω・´)", "|-` )", "|д` )", "|ー` )", "|∀` )", "(つд⊂)", "(ﾟДﾟ≡ﾟДﾟ)", "(＾o＾)ﾉ", "(|||ﾟДﾟ)", "( ﾟ∀ﾟ)", "( ´∀`)", "(*´∀`)", "(*ﾟ∇ﾟ)", "(*ﾟーﾟ)", "(　ﾟ 3ﾟ)", "( ´ー`)", "( ・_ゝ・)", "( ´_ゝ`)", "(*´д`)", "(・ー・)", "(・∀・)", "(ゝ∀･)", "(〃∀〃)", "(*ﾟ∀ﾟ*)", "( ﾟ∀。)", "( `д´)", "(`ε´ )", "(`ヮ´ )", "σ`∀´)", " ﾟ∀ﾟ)σ", "ﾟ ∀ﾟ)ノ", "(╬ﾟдﾟ)", "(|||ﾟдﾟ)", "( ﾟдﾟ)", "Σ( ﾟдﾟ)", "( ;ﾟдﾟ)", "( ;´д`)", "(　д ) ﾟ ﾟ", "( ☉д⊙)", "(((　ﾟдﾟ)))", "( ` ・´)", "( ´д`)", "( -д-)", "(>д<)", "･ﾟ( ﾉд`ﾟ)", "( TдT)", "(￣∇￣)", "(￣3￣)", "(￣ｰ￣)", "(￣ . ￣)", "(￣皿￣)", "(￣艸￣)", "(￣︿￣)", "(￣︶￣)", "ヾ(´ωﾟ｀)", "(*´ω`*)", "(・ω・)", "( ´・ω)", "(｀・ω)", "(´・ω・`)", "(`・ω・´)", "( `_っ´)", "( `ー´)", "( ´_っ`)", "( ´ρ`)", "( ﾟωﾟ)", "(oﾟωﾟo)", "(　^ω^)", "(｡◕∀◕｡)", "/( ◕‿‿◕ )\\", "ヾ(´ε`ヾ)", "(ノﾟ∀ﾟ)ノ", "(σﾟдﾟ)σ", "(σﾟ∀ﾟ)σ", "|дﾟ )", "┃電柱┃", "ﾟ(つд`ﾟ)", "ﾟÅﾟ )　", "⊂彡☆))д`)", "⊂彡☆))д´)", "⊂彡☆))∀`)", "(´∀((☆ミつ"];
+    var hits = 0;
+    var start_time = 0;
+
+    $('.menu-item-kaomoji a').click(function(e) {
+
+        if (start_time == 0) start_time = Date.now();
+
+        hits ++;
+
+        if (hits % 5 === 0) {
+            index = Math.floor(Math.random() * kaomoji_array.length);
+            $(this).html(kaomoji_array[index]);
+        }
+
+        x = $(this).offset().left + $(this).width();
+        y = $(this).offset().top + $(this).height();
+
+        if (hits % 50 === 0) {
+            var duration = 2000;
+            // actions per minite
+            var apm = parseInt(hits / ((Date.now() - start_time) / 1000) * 60);
+            start_time = 0;
+            hits = 0;
+            hit = $('<span class="info-rise" style="border: 1px solid #ffd6e4;font-size:13.5px;z-index:9999999;">手速：'+apm+' actions/min </span>');
+
+            console.log('APM: '+apm);
+        } else {
+            var duration = 500;
+            hit = $('<span class="info-rise">+1</span>');
+        }
+
+        hit.appendTo($("body"));
+
+        hit.css({
+            opacity: 0,
+            left: x,
+            top: y
+        }).animate({
+            opacity: 1,
+            top: y - 16
+        }, 250).animate({
+            opacity: 1,
+            top: y - 20
+        }, duration).animate({
+            top: y - 20
+        }, duration).animate({
+            opacity: 0,
+            top: y - 32
+        }, 250, function() {
+            return $(this).remove();
+        });
+
+    });
+</script>
+
+    <style type="text/css">
+    .p-load-gist {
+        margin: 25px 0 25px !important;
+        text-align: center;
+    }
+</style>
+
+<script type="text/javascript">
+    $('.load-gist').on('click', function() {
+        var gist = {
+            url: '//work.prinzeugen.net/gist/printempw/' + $(this).data('hash') + '.json?callback=?',
+            dom: this
+        };
+
+        $.getJSON(gist.url, function(data) {
+            gist.style      = document.createElement('link');
+            gist.style.type = 'text/css';
+            gist.style.rel  = 'stylesheet';
+            gist.style.href = data.stylesheet;
+
+            document.getElementsByTagName('HEAD')[0].appendChild(gist.style);
+
+            $(gist.dom).after(data.div).remove();
+        });
+    });
+</script>
+
+
+    
+      <script type="text/javascript">
+    String.prototype.cleanSlug = function () {
+        var search = '/index.html';
+
+        if (this.indexOf(search) === -1) {
+            return this.slice(0, -1)
+        } else {
+            return this.replace(search, '');
+        }
+    }
+
+    var Counter = function (url) {
+        this.baseCounterUrl = url;
+
+        this.initAllPostViews = function () {
+            var self = this;
+
+            // 遍历 post-view
+            $('[id=post-view]').each(function () {
+                // 默认 PV 设为 0
+                var span = $(this).html(0);
+                var slug = span.attr('data').cleanSlug();
+
+                self.getPostViewBySlug(slug, function (pv) {
+                    span.html(pv);
+                })
+            });
+        }
+
+        this.getPostViewBySlug = function (slug, callback) {
+            var url = this.baseCounterUrl + '/get/' + slug;
+
+            $.getJSON(url, function (data) {
+                callback(data.pv);
+            });
+        }
+
+        this.incPostViewBySlug = function (slug) {
+            var url = this.baseCounterUrl + '/increase/' + slug;
+
+            $.post(url, {}, function (data) {
+                $('#post-view').html(data.pv);
+            });
+        }
+    }
+
+    var counter = new Counter('https://work.prinzeugen.net/hexo-view-counter');
+
+    $(document).ready(function () {
+        counter.initAllPostViews();
+    });
+</script>
+
+
+<script type="text/javascript">
+    counter.incPostViewBySlug(
+        $('#post-view').attr('data').cleanSlug()
+    );
+</script>
+
+
+    
+
+    
+
+    
+  <script src="/js/jquery.disqusloader.js"></script>
+
+<script type="text/javascript">
+  $.disqusLoader('.disqus', {
+    scriptUrl: '//blessing-studio.disqus.com/embed.js',
+    laziness: 0,
+    preLoadCallback: function () {
+        $('.disqus-notice').show()
+    },
+    disqusConfig: function () {
+      this.callbacks.onReady = [function () {
+        $('.disqus-notice').hide()
+      }];
+    }
+  });
+</script>
+
+
+
+    <script type="text/javascript">nanobar.go(100);</script>
+  </body>
+</html>

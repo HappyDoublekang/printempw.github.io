@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+<meta name="theme-color" content="#3C8DBC">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="HandheldFriendly" content="True" />
+
+
+<meta name="description" content="这里是 @printempw 的个人博客，基本上啥都写：开发心得分享，日常吐槽吹逼，偶尔也会写正经文字，欢迎订阅。" />
+
+  <meta name="keywords" content="621sama, printempw, blog, 博客, 独立博客, Hexo" />
+
+
+
+
+
+
+<meta name="google-site-verification" content="WUNRfYChNMDduwLOFHG41TsVrre6BOaI7jKshEvtRts" />
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta name="generator" content="Hexo" />
+
+
+<meta name="description" content="这里是 @printempw 的个人博客，基本上啥都写：开发心得分享，日常吐槽吹逼，偶尔也会写正经文字，欢迎订阅。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blessing Studio">
+<meta property="og:url" content="https://blessing.studio/index.html">
+<meta property="og:site_name" content="Blessing Studio">
+<meta property="og:description" content="这里是 @printempw 的个人博客，基本上啥都写：开发心得分享，日常吐槽吹逼，偶尔也会写正经文字，欢迎订阅。">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blessing Studio">
+<meta name="twitter:description" content="这里是 @printempw 的个人博客，基本上啥都写：开发心得分享，日常吐槽吹逼，偶尔也会写正经文字，欢迎订阅。">
+<meta name="twitter:creator" content="@printempw">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Blessing Studio">
+
+
+
+  <link rel="canonical" href="https://blessing.studio/"/>
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="icon" sizes="192x192" href="/images/icon.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/images/touch-icon.png" />
+
+
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/libs/fancybox/source/jquery.fancybox.css">
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Alegreya" />
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Alegreya+SC" />
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Roboto+Slab">
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=PT+Serif">
+
+
+    <title>Blessing Studio - 半吊子全栈开发者的日常</title>
+  </head>
+
+  <body lang="zh-CN">
+
+    <div id="pageframe" class="fw">
+      <script type="text/javascript" src="/js/nanobar.js"></script>
+<script type="text/javascript">
+    /* Initial NanoBar */
+    var nanobar = new Nanobar({
+        bg: "#BEDBEC",
+        target: document.getElementById("pageframe"),
+        id: "inb"
+    });
+</script>
+
+
+      <div id="top" class="fw clf">
+        <div id="header" class="wc center">
+  <div class="logo-container left">
+    
+    <div class="logo left">
+      <a href="https://blessing.studio"><img src="/images/logo.png"></a>
+    </div>
+  </div>
+
+  <div class="social right">
+    
+    <div class="ico right" id="tg-s"><a href="javascript:void()" class="fa fa-search"></a></div>
+    <form role="search" method="get" id="searchform-top" action="https://www.google.com/search">
+      <input type="hidden" name="sitesearch" value="https://blessing.studio">
+      <input type="text" name="q" id="s-top" placeholder="搜一搜 (ゝω·)☆ " />
+    </form>
+
+    
+    <div id="toggler" class="right">
+      
+        
+          <div class="ico">
+            <a href="https://twitter.com/printempw" target="_blank" title="twitter" class="fa fa-twitter"></a>
+          </div>
+        
+          <div class="ico">
+            <a href="https://github.com/printempw" target="_blank" title="github" class="fa fa-github"></a>
+          </div>
+        
+      
+      <div class="ico">
+        <a href="/atom.xml" target="_blank" class="fa fa-rss" ></a>
+      </div>
+    </div>
+
+    <div class="ico right" id="tg-m"><a href="javascript:;" class="fa fa-bars"></a></div>
+  </div>
+
+  <div class="topmenu left">
+    <div class="menu-container">
+      <ul class="menu">
+  
+    
+    <li class="menu-item menu-item-tech">
+      <a href="/categories/tech/" title="提高姿势水平" rel="section">
+      技术
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-archive">
+      <a href="/archives/" title="总览历史文章" rel="section">
+      归档
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-kaomoji">
+      <a href="javascript:void;" title="点我点我" rel="section">
+      (´・ω・`)
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+  <div class="left clf"></div>
+
+</div>
+
+      </div>
+
+      <div id="container" class="wc center clf 
+   page-home 
+">
+        <script type="text/javascript">nanobar.go(20);</script>
+
+        <div id="content" class="wp">
+          
+  
+    
+
+    <article class="post post-type-normal hentry">
+      <h2 class="post-title">
+        <a href="/setup-nginx-php-on-windows/">Windows 下手动搭建 PHP + Nginx/Apache 开发环境</a>
+      </h2>
+
+      <div class="post-content">
+        
+          <p>看到这个标题，有人可能会想吐槽：</p>
+<p><strong>你他娘的写了这么久 PHP，怎么现在想起来搭建开发环境了？</strong></p>
+<p>呃，情况呢是这么个情况，我之前开发的那个 PHP 项目 (<a href="https://github.com/printempw/blessing-skin-server/" target="_blank" rel="noopener">printempw/blessing-skin-server</a>) 在两个月前发布 v3.5.0 版本后基本就已经告一段落了。虽然我本意是不再更新<del>（弃坑的委婉说法）</del>，因为当前的版本已经足够完善，该有的东西都有了（而且说实话搞了这么久我也腻味，不仅是对这个程序，还有对国内 Minecraft 开发生态以及用户群体的失望）。</p>
+<p>不过我的朋友 <a href="https://blog.gplane.win/" target="_blank" rel="noopener">g-plane</a> 说他愿意接坑，所以现在这个项目的后续开发都是他在搞。而我也乐得清闲，做个甩手掌柜 <a href="https://blessing.studio/vscode-c-cpp-configuration-for-acm-oj/">搞别的</a> 去了。当我摸鱼正快活时，他过来联系我说准备发布 4.0.0-alpha 了，我才想起来这茬：「啊，我连新版本长啥样都还不知道呢！😂」于是急急忙忙 pull 了新代码准备 review 一下，却发现我的新笔电上甚至压根儿就没安装 PHP 开发环境，只能说是非常地真实。</p>
+<p>因为 <a href="https://blessing.studio/phpstudy-prober-page-502-bad-gateway/">某些原因</a>，我不想继续使用那些 PHP 一键包来搭建开发环境了，所以这次我打算全部自己来。本文记录了我手动安装配置 PHP + Nginx/Apache 开发环境的过程，希望能帮到后来人。</p>
+<p>注意，本文中的配置适用于本地开发环境，应用至生产环境时要注意哦。</p>
+          <a class="more-link" href="/setup-nginx-php-on-windows/#more">阅读全文&rarr;</a>
+        
+      </div>
+
+      <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/tech/">技术</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2018-11-01</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="setup-nginx-php-on-windows/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/Apache/">Apache</a>, <a class="tag-link" href="/tag/Nginx/">Nginx</a>, <a class="tag-link" href="/tag/PHP/">PHP</a>
+    
+  </span>
+</div>
+
+    </article>
+  
+    
+
+    <article class="post post-type-normal hentry">
+      <h2 class="post-title">
+        <a href="/live-stream-recorder-for-vtuber-fans/">一种监测 VTuber 直播并自动录像的方法</a>
+      </h2>
+
+      <div class="post-content">
+        
+          <p>首先是惯例的闲聊时间。</p>
+<p>虽然这是我第一次在这个博客中提到 <a href="https://zh.wikipedia.org/zh-cn/%E8%99%9B%E6%93%ACYouTuber" target="_blank" rel="noopener">Virtual YouTuber</a>，不过我大概也算是比较早开始看 VTuber 的那一批人了。从始皇帝老爱（<a href="https://zh.wikipedia.org/wiki/%E7%B5%86%E6%84%9B" target="_blank" rel="noopener">キズナアイ</a>）诞生、四天王聚首，到年初 <a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%BC%E3%83%81%E3%83%A3%E3%83%AB%E3%81%AE%E3%81%98%E3%82%83%E3%83%AD%E3%83%AA%E7%8B%90%E5%A8%98Youtuber%E3%81%8A%E3%81%98%E3%81%95%E3%82%93" target="_blank" rel="noopener">狐叔</a> 引领的个人势井喷，再到以彩虹社（<a href="https://ja.wikipedia.org/wiki/%E3%81%AB%E3%81%98%E3%81%95%E3%82%93%E3%81%98" target="_blank" rel="noopener">にじさんじ</a>）为首的 2D 势、杂谈生放势展示了 VTuber 更大的可能性，而注意到这块肥肉的资本们也纷纷入场，百花争鸣的 VTuber 战国时代就此拉开序幕……如此种种，VTuber 界的快速发展令人眼花缭乱，也难怪有「一个月 = VTuber 历一年」的说法。</p>
+<p>不如说 VTuber 的世界实在过于精彩，每天都有大量好玩的内容产出，以至于我甚至已经很久没有看新番动画等传统 ACG 作品，就连游戏也不玩了，只能说 VTuber 沼恐怖如斯。</p>
+<p><img src="https://img.blessing.studio/images/2018/10/29/meme_i_am_ok.jpg" alt="meme_i_am_ok"></p>
+<p>为什么突然谈起这茬？其实我一直都想写一篇关于 VTuber 的文章，但是当时由于学业之类的原因只能搁置。然而到了现在，时间和精力确实是有了，但是正处繁荣期的 VTuber 市场的复杂度，却已经不再是我这孱弱的文笔能够描绘的了。只能说，非常遗憾。</p>
+<p>既然写不出来，那就不写，这是我写博客的标准。如果参考别人的文章照猫画虎、东拼西凑，确实是能挤出一点像样的文字，但那种中途半端的东西又有什么意思呢？我写博客是给自己看的，不是拿去哗众取宠的。所以，牛逼的文章就交给牛逼的人去写，我只管写我自己能写得出来的东西就够了。</p>
+<p>好了，闲话休题，今天我们的主题是「如何对 VTuber 的直播进行自动录像」。</p>
+          <a class="more-link" href="/live-stream-recorder-for-vtuber-fans/#more">阅读全文&rarr;</a>
+        
+      </div>
+
+      <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/tech/">技术</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2018-10-29</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="live-stream-recorder-for-vtuber-fans/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/VTuber/">VTuber</a>, <a class="tag-link" href="/tag/音视频处理/">音视频处理</a>
+    
+  </span>
+</div>
+
+    </article>
+  
+    
+
+    <article class="post post-type-normal hentry">
+      <h2 class="post-title">
+        <a href="/phpstudy-prober-page-502-bad-gateway/">phpStudy 访问探针页面出现 502 Bad Gateway 的解决方法</a>
+      </h2>
+
+      <div class="post-content">
+        
+          <p>不要问我为什么要用 phpStudy，我也不想。</p>
+<h2 id="TL-DR-太长不看"><a href="#TL-DR-太长不看" class="headerlink" title="TL;DR 太长不看"></a>TL;DR 太长不看</h2><p>Windows 环境下的 <strong>PHP 7.2.1 / 7.1.13</strong> 这两个版本有问题，在执行 <code>getenv()</code> 函数且第二个参数为 <code>false</code> 时，会造成 PHP FastCGI 进程 ( <code>php-cgi.exe</code> ) 崩溃。这是一个已知的 <a href="https://bugs.php.net/bug.php?id=75794" target="_blank" rel="noopener">BUG</a>，并且已经在 <strong>2018-02-01</strong> 发布的 <strong>PHP 7.2.2</strong> 与 <strong>PHP 7.1.14</strong> 中 <a href="http://www.php.net/ChangeLog-7.php#7.2.2" target="_blank" rel="noopener">被修复</a> 了。</p>
+<p>然而遗憾的是，你现在（截至发稿日 2018-10-21）能在 phpStudy 官网下载到的最新的集成环境，其中的 PHP 版本依然停留在 7.2.1 与 7.1.13。惊不惊喜，意不意外？</p>
+<p><img src="https://img.blessing.studio/images/2018/10/21/phpstudy-fake-version-7210.png" alt="phpstudy-fake-version-7210"></p>
+<p>最绝的是，phpStudy 明明自带的是 <strong>7.2.1</strong> 版本的 PHP，却在界面上显示成了 <strong>7.2.10</strong>，是我瞎了还是你瞎了？补零也不是你这么补的啊兄弟……</p>
+<p>修复方法也很简单，<strong>升级 PHP 版本即可</strong>。</p>
+<p>下面开始讲废话。</p>
+          <a class="more-link" href="/phpstudy-prober-page-502-bad-gateway/#more">阅读全文&rarr;</a>
+        
+      </div>
+
+      <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/tech/">技术</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2018-10-21</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="phpstudy-prober-page-502-bad-gateway/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/PHP/">PHP</a>, <a class="tag-link" href="/tag/记录/">记录</a>
+    
+  </span>
+</div>
+
+    </article>
+  
+    
+
+    <article class="post post-type-normal hentry">
+      <h2 class="post-title">
+        <a href="/new-nickname-prin/">新的网络昵称：PRIN 🍮</a>
+      </h2>
+
+      <div class="post-content">
+        
+          <p>这不是我第一次这么想：</p>
+<p><strong>我的常用 ID <code>printempw</code> 太难读了。</strong></p>
+<p>有多难读呢？难读到连我自己都不知道这玩意该怎么读。</p>
+<p>这个 ID 的词源是法语的 <em>printemps</em>（春天，春季），将这个单词尾部的 <em>s</em> 替换为 <em>w</em> 后……才怪嘞！我又不会法语，怎么可能是这么高大上的理由嘛（笑）。虽然词源确实是法语，但这个单词是我看了<a href="https://zh.moegirl.org/LoveLive!" target="_blank" rel="noopener">《LoveLive!》</a>后才知道的 —— <a href="https://zh.moegirl.org/zh-hans/Printemps" target="_blank" rel="noopener">Printemps</a> 同时也是企划中 高坂穗乃果、南ことり、小泉花阳 组成的 μ’s 三个小分队之一。当时正好沉迷 LL，取 ID 时顺手就用了这个，因为 <em>printemps</em> 已经被占用了就稍微修改了一下变成现在的 <em>printempw</em> ……</p>
+<p>嗯，真的是个怎样都好的理由。XD</p>
+<hr>
+<p>关于读音，法语单词 <em>printemps</em> 的读音是 [prɛ̃tɑ̃]，LL 中 <em>printemps</em> 的读音是 [プランタン]（到这里就改得没原型了……日本人的外来语发音一如既往地奇妙），按照英语的发音习惯 <em>printemps</em> 大概可以读成 [prɪnˈtemps]，而将单词尾部的 <em>s</em> 修改为 <em>w</em> 后应该读作……</p>
+<p><img src="https://img.blessing.studio/images/2018/10/03/meme-duck-question-mark.jpg" alt="meme-duck-question-mark"></p>
+<p>因此，这几年我一直致力于给自己起一个简单易懂、中日英三语都易于发音、和 <code>printempw</code> 这个常用 ID 有关联、最好能够可爱一些的昵称，但是苦于一直找不到合适的。</p>
+<p>然而就在前几天的高数课上（？），我灵光一闪：</p>
+<blockquote>
+<p> printempw -&gt; PRIN -&gt; プリン -&gt; 🍮 -&gt; 布丁！</p>
+</blockquote>
+<p><del>唉，我他娘的可真是个天才。（不）</del></p>
+<hr>
+<p>情况呢就是这么个情况，这就是我以后的昵称了：</p>
+<ul>
+<li>书写：<strong>PRIN</strong>（中文语境下也可以写成 <strong>布丁</strong>）；</li>
+<li>读音：[プリン] 或者 <em>[prɪn]</em>；</li>
+<li>变动的只是昵称，ID <code>printempw</code> 依然保持不变；</li>
+<li>当然，你不用这个称呼我也不会介意的。:P</li>
+</ul>
+<p>以后博客标题可能也会作出改动，请多关照。🍮</p>
+
+        
+      </div>
+
+      <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/diary/">日常</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2018-10-03</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="new-nickname-prin/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/水/">水</a>
+    
+  </span>
+</div>
+
+    </article>
+  
+    
+
+    <article class="post post-type-normal hentry">
+      <h2 class="post-title">
+        <a href="/vscode-c-cpp-configuration-for-acm-oj/">使用 VS Code 搭建适用于 ACM 练习的 C/C++ 开发环境</a>
+      </h2>
+
+      <div class="post-content">
+        
+          <p>大学入学也快一个月了，总的来说，我过得很开心，不枉我花费一年的时间 <a href="https://blessing.studio/check-in-2018-07/">高考复读</a>。具体哪里令人开心呢？我觉得最主要的是，比起初高中，大学的时间分配更为自由。</p>
+<p><strong>中学时代，学生的时间基本都被学校安排得死死的</strong>：早上什么时间必须到校，然后开始早读、上午五节课下午三节课、晚读、晚自习，最后在规定的时间离校（住宿生还要在规定的时间就寝），可以自由分配的时间少得可怜，在某些管理严格的学校甚至连人身自由都要被限制。虽然学生们苦中作乐的摸鱼技巧也不容小觑，但考虑到升学的压力，如果在兴趣上分配的时间过多，很有可能就会像我去年一样落得个无法升学的尴尬境地。</p>
+<p><strong>而大学相对来说就没有那么多破规矩</strong>：有课就上，没课的话时间就随你安排，回寝室睡觉也好出门嗨皮也罢，突出一个爱干嘛干嘛。在这些闲暇时间里，有人选择加入社团以及各种各样的学生组织，有人寻欢作乐讴歌青春，有人一头扎进自己的兴趣爱好中，也有人选择当个快乐摸鱼侠无事一身轻。</p>
+<p>而我就比较硬核了，我选择参加可能让我基本告别头发的 ACM 程序设计竞赛（不）。</p>
+<p><img src="https://img.blessing.studio/images/2018/10/02/cs-no-hair.jpg" alt="cs-no-hair"></p>
+<p>好啦言归正传，今天我们的主题是在 VS Code 编辑器中搭建适用于 ACM 练习的 C/C++ 开发环境。</p>
+          <a class="more-link" href="/vscode-c-cpp-configuration-for-acm-oj/#more">阅读全文&rarr;</a>
+        
+      </div>
+
+      <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/tech/">技术</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2018-10-02</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="vscode-c-cpp-configuration-for-acm-oj/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/ACM/">ACM</a>, <a class="tag-link" href="/tag/C-C/">C/C++</a>, <a class="tag-link" href="/tag/VS-Code/">VS Code</a>
+    
+  </span>
+</div>
+
+    </article>
+  
+    
+
+    <article class="post post-type-normal hentry">
+      <h2 class="post-title">
+        <a href="/wsl-guide/">WSL 配置指北：打造 Windows 最强命令行</a>
+      </h2>
+
+      <div class="post-content">
+        
+          <p>在两年前的八月，Microsoft 正式发布了 Windows 10 Anniversary Update 周年更新（它还有着 RS1，Version 1607，Build 14393 等一大堆别名）。其中最让包括我在内的众多开发者感到兴奋的特性之一，就是 WSL（Windows Subsystem for Linux，当时还叫 Bash on Ubuntu on Windows）的正式加入。</p>
+<p><strong>在 Windows 上原生运行 Linux 可执行文件，牛逼疯了！</strong></p>
+<p>然而 Bug10 也不是浪得虚名，原本只提供给 Insider 的 WSL 在正式发布后依然问题多多（不仅 zsh、tmux 等工具无法使用，网络相关的操作更是一概欠奉，还有各种各样 <a href="https://twitter.com/printempw/status/927862325280772096" target="_blank" rel="noopener">奇妙的 BUG</a>），基本没有可用性，我在尝鲜了一段时间后也不得不重回 Cygwin 的怀抱。不过好消息是，在之后的更新中，<a href="https://blogs.msdn.microsoft.com/commandline/2017/04/11/windows-10-creators-update-whats-new-in-bashwsl-windows-console/" target="_blank" rel="noopener">这些 BUG 都已被逐一消灭</a>。</p>
+<p>经过了两年的发展，WSL 已经<a href="https://twitter.com/printempw/status/927898980385677312" target="_blank" rel="noopener">足够成熟</a>，我也是时候完成这篇<a href="https://twitter.com/printempw/status/928656863310200832" target="_blank" rel="noopener">一咕再咕</a>的博文了。</p>
+<p>（开学在即，仓促成文，如有谬误，还请指正。）</p>
+<p><img src="https://img.blessing.studio/images/2018/09/08/get-wsl.png" alt="get-wsl"></p>
+          <a class="more-link" href="/wsl-guide/#more">阅读全文&rarr;</a>
+        
+      </div>
+
+      <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/tech/">技术</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2018-09-08</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="wsl-guide/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/CLI/">CLI</a>, <a class="tag-link" href="/tag/WSL/">WSL</a>, <a class="tag-link" href="/tag/Windows/">Windows</a>
+    
+  </span>
+</div>
+
+    </article>
+  
+    
+
+    <article class="post post-type-normal hentry">
+      <h2 class="post-title">
+        <a href="/add-notepad-plus-plus-to-context-menu/">添加 Notepad++ 至右键菜单的几种方法</a>
+      </h2>
+
+      <div class="post-content">
+        
+          <p>作为一名即将开学的计算机系 <a href="https://blessing.studio/check-in-2018-07/">准大学生</a>，笔记本电脑总归是要有一台的。于是上星期我入手了 <a href="https://twitter.com/printempw/status/1030043615983104000" target="_blank" rel="noopener">小米游戏本顶配版</a>（i7-8750H + 16G + GTX 1066），最近正在重新折腾开发环境，这篇文章要解决的问题也是在此过程中出现的。</p>
+<p>至于为什么要买小米的本子，主要是因为它的「游戏本性能 + 商务本外观」这一点正戳中我好球区。不过这几天使用下来，只能说缺点确实不少，有购买意愿的朋友需谨慎。在 Twitter 上搜索 <code>小米游戏本 from:printempw</code> 就能看到我发的吐槽简评，如果之后有时间的话也打算专门写篇评测（咕咕咕）。</p>
+<p>回到正题。因为以前家里的电脑是全家共用的所以没什么，不过最近有了自己的电脑，我的软件洁癖就上来了：<strong>有<a href="https://zh.wikipedia.org/wiki/%E7%B6%A0%E8%89%B2%E8%BB%9F%E9%AB%94" target="_blank" rel="noopener">绿色版</a>（便携软件，Portable Application）的绝不用安装版，国产软件一律扔沙盒运行。</strong></p>
+<p>看起来有点偏执，不过我就属于那种想把自己设备中的一切纳入可控范围内的人。Windows 在这点上就很讨厌，尤其是注册表的设计，比类 Unix 系统难管理了不是一点半点。在手机上也是一样，不能解锁 bootloader 的 Android 机器我绝对不会购买，AppOps、Magisk、<a href="https://play.google.com/store/apps/details?id=moe.shizuku.redirectstorage" target="_blank" rel="noopener">存储重定向</a> 等工具更是必备。虽然我也没偏执到「每条指令运行都需要我的许可」那种程度，不过至少，我的设备必须听我的话，我说什么不能做那就是不能做，你他娘的不能给我自作主张（比如 Windows <a href="https://www.zhihu.com/question/271414438" target="_blank" rel="noopener">广受诟病的自动更新机制</a>、某些臭名昭著的国产软件扫描用户硬盘等）。为什么？<strong>因为是我在用电脑，不是电脑用我。</strong></p>
+<p>好了言归正传（没错，本博客就是有在进入正题之前瞎扯一通的习惯）。</p>
+<p><a href="https://notepad-plus-plus.org/" target="_blank" rel="noopener">Notepad++</a> 是一款我很喜欢的文本编辑器，除了写代码和写文章外的一般文本编辑工作我都是使用它完成的，配置新电脑时自然不能少了它。我下载的是 Portable 便携版，不过也正因如此，原本在 Installer 中通过选项可以添加的 <em>Edit with Notepad++</em> 右键菜单项也没有了（此操作需要写注册表）。</p>
+<p>因为这个右键菜单还蛮好用的，所以我打算把它找回来。</p>
+<p><img src="https://img.blessing.studio/images/2018/08/29/npp-context-menu-demo.png" alt="npp-context-menu-demo"></p>
+          <a class="more-link" href="/add-notepad-plus-plus-to-context-menu/#more">阅读全文&rarr;</a>
+        
+      </div>
+
+      <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/tech/">技术</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2018-08-29</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="add-notepad-plus-plus-to-context-menu/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/Windows/">Windows</a>, <a class="tag-link" href="/tag/记录/">记录</a>
+    
+  </span>
+</div>
+
+    </article>
+  
+    
+
+    <article class="post post-type-normal hentry">
+      <h2 class="post-title">
+        <a href="/migrate-to-github-pages/">博客迁移至 GitHub Pages</a>
+      </h2>
+
+      <div class="post-content">
+        
+          <p>就在刚才，我把博客完全迁移到了 GitHub Pages 上。</p>
+<p>为啥呢？简单来说，就是我懒得维护服务器了。</p>
+<p>去年十月份，我为博客添加了 <a href="https://blessing.studio/deploy-hexo-blog-automatically-with-travis-ci/">Travis CI 自动构建流程</a>，发布新博文只需要把 Markdown 源码 push 至 GitHub 上的仓库，CI 会帮我自动完成后续的所有步骤，很适合我这种懒人。</p>
+<p>在我的 CI 脚本中，博客构建完毕后会把构建结果 <a href="https://github.com/printempw/printempw.github.io/blob/source/.travis/deploy.sh#L19" target="_blank" rel="noopener">同时推送</a> 至 GitHub Pages 和我自己的服务器。由于我之前一直是在自有服务器上部署的动态博客程序（WordPress、Ghost），一直用下来也没什么不妥，所以当时我也只是把 GitHub Pages 当成一个备胎，博客域名依然是解析到自有服务器上的。</p>
+<p>但是最近我想了想，把博客部署在自己的服务器上，有几点不好：</p>
+<p>首先是服务可用率。我是个穷屌，只有一台 DigitalOcean $5 的机器，既没有负载均衡，也没有冗余服务器。如果这台机器宕掉了，那博客就只能跟着下线，谁也访问不了。而且事实上我的服务器就有好几次莫名其妙出现过 Kernel Panic，收到监控报警后只能灰溜溜地去登录控制台重启服务器。</p>
+<p>另外就是，我想在这个世界上留下点什么东西。如果博客放在我自己的服务器上的话，假如我出了啥三长两短、服务器久了没人管理，那我的博客很有可能就烟消云散了，多难过啊。</p>
+<p>不过当然啦，要是那么在意这个的话，我就去用 Medium 这类写作平台，而不是自建独立博客了。我觉得 GitHub Pages 这类托管服务算是一个不错的平衡点，既保留了独立博客的风格，又不用特别去担心服务器的问题，自己只用操心内容就够了，挺不错的。</p>
+
+        
+      </div>
+
+      <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/diary/">日常</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2018-08-24</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="migrate-to-github-pages/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/博客/">博客</a>
+    
+  </span>
+</div>
+
+    </article>
+  
+    
+
+    <article class="post post-type-normal hentry">
+      <h2 class="post-title">
+        <a href="/the-difference-between-cli-terminal-shell-tty/">命令行界面 (CLI)、终端 (Terminal)、Shell、TTY，傻傻分不清楚？</a>
+      </h2>
+
+      <div class="post-content">
+        
+          <p>诸君，好久不见。</p>
+<p>为什么突然想写这样一篇文章呢？其实是因为在最近计划发布的一篇关于 WSL (Windows Subsystem for Linux) 的博文中，我打算对终端模拟器、Shell 的选择与配置进行一些说明。不过对于刚接触 Linux 或者刚接触命令行界面的同学，可能会有些难以理解它们之间的区别（事实上我当初也是这样）。</p>
+<p>虽然这个话题已是老生常谈，搜索一下应该也能找到大把的相关文章。不过难得提到了这方面，就趁此机会把我的理解写下来，一来看看我是不是真正理解了，二来看看我能不能把它们之间的区别讲得更加简明易懂。</p>
+<h2 id="0-太长不看-TL-DR"><a href="#0-太长不看-TL-DR" class="headerlink" title="0. 太长不看 TL;DR"></a>0. 太长不看 TL;DR</h2><ul>
+<li><strong>命令行界面</strong> (CLI) = 使用文本命令进行交互的用户界面</li>
+<li><strong>终端</strong> (Terminal) = <strong>TTY</strong> = 文本输入/输出环境</li>
+<li><strong>控制台</strong> (Console) = 一种特殊的终端</li>
+<li><strong>Shell</strong> = 命令行解释器，执行用户输入的命令并返回结果</li>
+</ul>
+<h2 id="1-什么是命令行界面？"><a href="#1-什么是命令行界面？" class="headerlink" title="1. 什么是命令行界面？"></a>1. 什么是命令行界面？</h2><p>命令行界面，通俗来讲，就是你看过的那种满屏幕都是字符的界面。</p>
+          <a class="more-link" href="/the-difference-between-cli-terminal-shell-tty/#more">阅读全文&rarr;</a>
+        
+      </div>
+
+      <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/tech/">技术</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2018-08-22</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="the-difference-between-cli-terminal-shell-tty/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/CLI/">CLI</a>, <a class="tag-link" href="/tag/Shell/">Shell</a>, <a class="tag-link" href="/tag/科普/">科普</a>
+    
+  </span>
+</div>
+
+    </article>
+  
+    
+
+    <article class="post post-type-normal hentry">
+      <h2 class="post-title">
+        <a href="/check-in-2018-07/">近况报告：我的高复生活</a>
+      </h2>
+
+      <div class="post-content">
+        
+          <p>好久不见。</p>
+<p>当你正在阅读这篇文章时，你应该很难想象，一位半年多没有写过博客的老鸽是以怎样复杂的心情打出这些文字的。由于我实在是太久没有正经写过文章了，对文字的感觉也未免生疏，所以这篇近况报告可能会写得像流水账一样又臭又长。你就把本文想象成是一位老年人博主重拾博客更新前的康复训练，以温暖的目光看下去吧。</p>
+<h2 id="我为什么这么久没写博客了？"><a href="#我为什么这么久没写博客了？" class="headerlink" title="我为什么这么久没写博客了？"></a>我为什么这么久没写博客了？</h2><p>为什么？因为忙啊，不然还能是为什么。（笑）</p>
+<p>不过不得不承认，我这一年更新博客的频率确实是低到史无前例：2018 年到现在，我只发布过 2 篇博文，这个数据是 2017 年的十分之一。为什么呢？有看过我前几篇博文的朋友应该都知道，我在去年的高考中没有取得理想的成绩，在一番权衡后，我选择了高考复读这一条道路。</p>
+<p>高考复读，也就是再读一年高三，再经历一次高考。</p>
+          <a class="more-link" href="/check-in-2018-07/#more">阅读全文&rarr;</a>
+        
+      </div>
+
+      <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/diary/">日常</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2018-07-21</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="check-in-2018-07/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/水/">水</a>, <a class="tag-link" href="/tag/近况报告/">近况报告</a>
+    
+  </span>
+</div>
+
+    </article>
+  
+
+  
+  <div id="p-nav" class="clf">
+    <nav class="navigation pagination" role="navigation">
+      <div class="nav-links">
+          <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/2/">Next</a>
+      </div>
+    </nav>
+  </div>
+
+
+
+
+
+
+        </div>
+
+        
+<div id="sidebar" class="fl">
+
+  
+
+  <div id="abovesb">
+    <div class="card">
+      <div class="gr center">
+        
+        <style> .gr:hover > img { opacity: initial; } </style>
+        
+        <img src="/images/avatar.jpg" width="112" height="112">
+      </div>
+
+      <div class="blogname">Blessing Studio</div>
+      <div class="blogdesc">半吊子全栈开发者的日常</div>
+
+      <div class="sbmenu">
+        <div class="menu-container">
+          <ul class="menu">
+  
+    
+    <li class="menu-item menu-item-friends">
+      <a href="/friends" title="友情链接" rel="section">
+        <i class="fa fa-link"></i>我的小伙伴们
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-about">
+      <a href="/about" title="(*ﾟ∀ﾟ*)" rel="section">
+        <i class="fa fa-code"></i>关于我
+      </a>
+    </li>
+  
+</ul>
+
+        </div>
+      </div>
+    </div>
+    
+    <div id="music-player" class="aplayer hide rotated"></div>
+  </div>
+
+  <script type="text/javascript">nanobar.go(40);</script>
+
+  <div id="sb">
+    
+<div id="sbpin">
+  
+  
+
+  
+  
+  <div class="clf widget-item widget_text">
+    <div class="textwidget">
+      <script type="text/javascript" src="https://work.prinzeugen.net/hitokoto/hitokoto.php?encode=javascript"></script>
+      <p id="hitokoto"><script>hitokoto();</script></p>
+    </div>
+  </div>
+  
+
+  
+  
+
+</div>
+
+  </div>
+</div>
+
+
+      </div><!-- #container -->
+
+      <div id="foot" class="fw">
+        <div id="bottom" class="fw">
+  <div id="footer" class="wc center clf">
+    <div class="info">
+      <p>Copyleft 2018 <a href="https://blessing.studio">Blessing Studio</a>. Proudly published with <a href="https://hexo.io/" target="_blank">Hexo</a>. Made with ❤ by printempw.</p>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+    </div><!-- #pageframe.fw -->
+    <script type="text/javascript">nanobar.go(80);</script>
+
+    <div class="back-to-top">
+      <span class="fa fa-angle-up"></span>
+    </div>
+
+    <script src="/js/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.libs.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/libs/fancybox/source/jquery.fancybox.pack.js"></script>
+<script src="/js/script.js"></script>
+
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65656002-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    <style type="text/css">
+    .menu-item-kaomoji a {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .info-rise {
+        z-index: 99999;
+        position: absolute;
+        padding: 0 4px;
+        border-radius: 1px;
+        background-color: #f69;
+        box-shadow: 0 0 1px rgba(0,0,0,0.1);
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.5;
+        cursor: default
+    }
+</style>
+
+<script type="text/javascript">
+    var kaomoji_array = ["|∀ﾟ", "(´ﾟДﾟ`)", "(;´Д`)", "(｀･ω･)", "(=ﾟωﾟ)=", "| ω・´)", "|-` )", "|д` )", "|ー` )", "|∀` )", "(つд⊂)", "(ﾟДﾟ≡ﾟДﾟ)", "(＾o＾)ﾉ", "(|||ﾟДﾟ)", "( ﾟ∀ﾟ)", "( ´∀`)", "(*´∀`)", "(*ﾟ∇ﾟ)", "(*ﾟーﾟ)", "(　ﾟ 3ﾟ)", "( ´ー`)", "( ・_ゝ・)", "( ´_ゝ`)", "(*´д`)", "(・ー・)", "(・∀・)", "(ゝ∀･)", "(〃∀〃)", "(*ﾟ∀ﾟ*)", "( ﾟ∀。)", "( `д´)", "(`ε´ )", "(`ヮ´ )", "σ`∀´)", " ﾟ∀ﾟ)σ", "ﾟ ∀ﾟ)ノ", "(╬ﾟдﾟ)", "(|||ﾟдﾟ)", "( ﾟдﾟ)", "Σ( ﾟдﾟ)", "( ;ﾟдﾟ)", "( ;´д`)", "(　д ) ﾟ ﾟ", "( ☉д⊙)", "(((　ﾟдﾟ)))", "( ` ・´)", "( ´д`)", "( -д-)", "(>д<)", "･ﾟ( ﾉд`ﾟ)", "( TдT)", "(￣∇￣)", "(￣3￣)", "(￣ｰ￣)", "(￣ . ￣)", "(￣皿￣)", "(￣艸￣)", "(￣︿￣)", "(￣︶￣)", "ヾ(´ωﾟ｀)", "(*´ω`*)", "(・ω・)", "( ´・ω)", "(｀・ω)", "(´・ω・`)", "(`・ω・´)", "( `_っ´)", "( `ー´)", "( ´_っ`)", "( ´ρ`)", "( ﾟωﾟ)", "(oﾟωﾟo)", "(　^ω^)", "(｡◕∀◕｡)", "/( ◕‿‿◕ )\\", "ヾ(´ε`ヾ)", "(ノﾟ∀ﾟ)ノ", "(σﾟдﾟ)σ", "(σﾟ∀ﾟ)σ", "|дﾟ )", "┃電柱┃", "ﾟ(つд`ﾟ)", "ﾟÅﾟ )　", "⊂彡☆))д`)", "⊂彡☆))д´)", "⊂彡☆))∀`)", "(´∀((☆ミつ"];
+    var hits = 0;
+    var start_time = 0;
+
+    $('.menu-item-kaomoji a').click(function(e) {
+
+        if (start_time == 0) start_time = Date.now();
+
+        hits ++;
+
+        if (hits % 5 === 0) {
+            index = Math.floor(Math.random() * kaomoji_array.length);
+            $(this).html(kaomoji_array[index]);
+        }
+
+        x = $(this).offset().left + $(this).width();
+        y = $(this).offset().top + $(this).height();
+
+        if (hits % 50 === 0) {
+            var duration = 2000;
+            // actions per minite
+            var apm = parseInt(hits / ((Date.now() - start_time) / 1000) * 60);
+            start_time = 0;
+            hits = 0;
+            hit = $('<span class="info-rise" style="border: 1px solid #ffd6e4;font-size:13.5px;z-index:9999999;">手速：'+apm+' actions/min </span>');
+
+            console.log('APM: '+apm);
+        } else {
+            var duration = 500;
+            hit = $('<span class="info-rise">+1</span>');
+        }
+
+        hit.appendTo($("body"));
+
+        hit.css({
+            opacity: 0,
+            left: x,
+            top: y
+        }).animate({
+            opacity: 1,
+            top: y - 16
+        }, 250).animate({
+            opacity: 1,
+            top: y - 20
+        }, duration).animate({
+            top: y - 20
+        }, duration).animate({
+            opacity: 0,
+            top: y - 32
+        }, 250, function() {
+            return $(this).remove();
+        });
+
+    });
+</script>
+
+    <style type="text/css">
+    .p-load-gist {
+        margin: 25px 0 25px !important;
+        text-align: center;
+    }
+</style>
+
+<script type="text/javascript">
+    $('.load-gist').on('click', function() {
+        var gist = {
+            url: '//work.prinzeugen.net/gist/printempw/' + $(this).data('hash') + '.json?callback=?',
+            dom: this
+        };
+
+        $.getJSON(gist.url, function(data) {
+            gist.style      = document.createElement('link');
+            gist.style.type = 'text/css';
+            gist.style.rel  = 'stylesheet';
+            gist.style.href = data.stylesheet;
+
+            document.getElementsByTagName('HEAD')[0].appendChild(gist.style);
+
+            $(gist.dom).after(data.div).remove();
+        });
+    });
+</script>
+
+
+    
+      <script type="text/javascript">
+    String.prototype.cleanSlug = function () {
+        var search = '/index.html';
+
+        if (this.indexOf(search) === -1) {
+            return this.slice(0, -1)
+        } else {
+            return this.replace(search, '');
+        }
+    }
+
+    var Counter = function (url) {
+        this.baseCounterUrl = url;
+
+        this.initAllPostViews = function () {
+            var self = this;
+
+            // 遍历 post-view
+            $('[id=post-view]').each(function () {
+                // 默认 PV 设为 0
+                var span = $(this).html(0);
+                var slug = span.attr('data').cleanSlug();
+
+                self.getPostViewBySlug(slug, function (pv) {
+                    span.html(pv);
+                })
+            });
+        }
+
+        this.getPostViewBySlug = function (slug, callback) {
+            var url = this.baseCounterUrl + '/get/' + slug;
+
+            $.getJSON(url, function (data) {
+                callback(data.pv);
+            });
+        }
+
+        this.incPostViewBySlug = function (slug) {
+            var url = this.baseCounterUrl + '/increase/' + slug;
+
+            $.post(url, {}, function (data) {
+                $('#post-view').html(data.pv);
+            });
+        }
+    }
+
+    var counter = new Counter('https://work.prinzeugen.net/hexo-view-counter');
+
+    $(document).ready(function () {
+        counter.initAllPostViews();
+    });
+</script>
+
+
+
+    
+
+    
+
+    
+
+    <script type="text/javascript">nanobar.go(100);</script>
+  </body>
+</html>

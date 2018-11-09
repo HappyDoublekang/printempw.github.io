@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+<meta name="theme-color" content="#3C8DBC">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="HandheldFriendly" content="True" />
+
+
+<meta name="description" content="这里是 @printempw 的个人博客，基本上啥都写：开发心得分享，日常吐槽吹逼，偶尔也会写正经文字，欢迎订阅。" />
+
+  <meta name="keywords" content="博客,Hexo,持续集成," />
+
+
+
+
+
+
+<meta name="google-site-verification" content="WUNRfYChNMDduwLOFHG41TsVrre6BOaI7jKshEvtRts" />
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta name="generator" content="Hexo" />
+
+
+<meta name="description" content="之前（六月份高考完后）我把博客引擎由 Ghost 换成了静态博客生成器 Hexo，并且只使用了自带的 Git Deployment 来手动部署生成好的静态博客文件到服务器上。虽然不像动态博客程序那样可以随时随地更新博客，但是想到马上就要上大学了，之后手头都会有电脑，所以更新博客也不算那么麻烦。 但是实在是人算不如天算，浙江这一届新高考改革是结结实实地把我坑了一把。二段线以上一段线未满这样中途半端的">
+<meta name="keywords" content="博客,Hexo,持续集成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Travis CI 自动部署 Hexo 博客">
+<meta property="og:url" content="https://blessing.studio/deploy-hexo-blog-automatically-with-travis-ci/index.html">
+<meta property="og:site_name" content="Blessing Studio">
+<meta property="og:description" content="之前（六月份高考完后）我把博客引擎由 Ghost 换成了静态博客生成器 Hexo，并且只使用了自带的 Git Deployment 来手动部署生成好的静态博客文件到服务器上。虽然不像动态博客程序那样可以随时随地更新博客，但是想到马上就要上大学了，之后手头都会有电脑，所以更新博客也不算那么麻烦。 但是实在是人算不如天算，浙江这一届新高考改革是结结实实地把我坑了一把。二段线以上一段线未满这样中途半端的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.blessing.studio/images/2017/10/04/snipaste_20171004_201448.png">
+<meta property="og:image" content="https://img.blessing.studio/images/2017/10/04/snipaste_20171004_201526.png">
+<meta property="og:image" content="https://img.blessing.studio/images/2017/10/04/snipaste_20171004_204633.png">
+<meta property="og:image" content="https://i.loli.net/2017/10/04/59d4dac7a6381.png">
+<meta property="og:image" content="https://img.blessing.studio/images/2017/10/04/QQ20171004210320.jpg">
+<meta property="og:image" content="https://img.blessing.studio/images/2017/10/04/snipaste_20171004_212745.png">
+<meta property="og:updated_time" content="2017-10-04T02:50:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Travis CI 自动部署 Hexo 博客">
+<meta name="twitter:description" content="之前（六月份高考完后）我把博客引擎由 Ghost 换成了静态博客生成器 Hexo，并且只使用了自带的 Git Deployment 来手动部署生成好的静态博客文件到服务器上。虽然不像动态博客程序那样可以随时随地更新博客，但是想到马上就要上大学了，之后手头都会有电脑，所以更新博客也不算那么麻烦。 但是实在是人算不如天算，浙江这一届新高考改革是结结实实地把我坑了一把。二段线以上一段线未满这样中途半端的">
+<meta name="twitter:image" content="https://img.blessing.studio/images/2017/10/04/snipaste_20171004_201448.png">
+<meta name="twitter:creator" content="@printempw">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Blessing Studio">
+
+
+
+  <link rel="canonical" href="https://blessing.studio/deploy-hexo-blog-automatically-with-travis-ci/"/>
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="icon" sizes="192x192" href="/images/icon.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/images/touch-icon.png" />
+
+
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/libs/fancybox/source/jquery.fancybox.css">
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Alegreya" />
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Alegreya+SC" />
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=Roboto+Slab">
+<link rel="stylesheet" type="text/css" href="https://fonts.cat.net/css?family=PT+Serif">
+
+
+    <title>使用 Travis CI 自动部署 Hexo 博客 - Blessing Studio</title>
+  </head>
+
+  <body lang="zh-CN">
+
+    <div id="pageframe" class="fw">
+      <script type="text/javascript" src="/js/nanobar.js"></script>
+<script type="text/javascript">
+    /* Initial NanoBar */
+    var nanobar = new Nanobar({
+        bg: "#BEDBEC",
+        target: document.getElementById("pageframe"),
+        id: "inb"
+    });
+</script>
+
+
+      <div id="top" class="fw clf">
+        <div id="header" class="wc center">
+  <div class="logo-container left">
+    
+    <div class="logo left">
+      <a href="https://blessing.studio"><img src="/images/logo.png"></a>
+    </div>
+  </div>
+
+  <div class="social right">
+    
+    <div class="ico right" id="tg-s"><a href="javascript:void()" class="fa fa-search"></a></div>
+    <form role="search" method="get" id="searchform-top" action="https://www.google.com/search">
+      <input type="hidden" name="sitesearch" value="https://blessing.studio">
+      <input type="text" name="q" id="s-top" placeholder="搜一搜 (ゝω·)☆ " />
+    </form>
+
+    
+    <div id="toggler" class="right">
+      
+        
+          <div class="ico">
+            <a href="https://twitter.com/printempw" target="_blank" title="twitter" class="fa fa-twitter"></a>
+          </div>
+        
+          <div class="ico">
+            <a href="https://github.com/printempw" target="_blank" title="github" class="fa fa-github"></a>
+          </div>
+        
+      
+      <div class="ico">
+        <a href="/atom.xml" target="_blank" class="fa fa-rss" ></a>
+      </div>
+    </div>
+
+    <div class="ico right" id="tg-m"><a href="javascript:;" class="fa fa-bars"></a></div>
+  </div>
+
+  <div class="topmenu left">
+    <div class="menu-container">
+      <ul class="menu">
+  
+    
+    <li class="menu-item menu-item-tech">
+      <a href="/categories/tech/" title="提高姿势水平" rel="section">
+      技术
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-archive">
+      <a href="/archives/" title="总览历史文章" rel="section">
+      归档
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-kaomoji">
+      <a href="javascript:void;" title="点我点我" rel="section">
+      (´・ω・`)
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+  <div class="left clf"></div>
+
+</div>
+
+      </div>
+
+      <div id="container" class="wc center clf page-post">
+        <script type="text/javascript">nanobar.go(20);</script>
+
+        <div id="content" class="wp">
+          
+
+  
+  <article class="post post-type-normal hentry">
+    <h1 class="post-title">
+      <a href="/deploy-hexo-blog-automatically-with-travis-ci/">使用 Travis CI 自动部署 Hexo 博客</a>
+    </h1>
+
+    
+      <script src="/js/dayjs.min.js"></script>
+
+<script>
+  var post_updated = dayjs("2017-10-04T02:50:41.000Z");
+  var days_diff_now = dayjs().diff(post_updated, 'days');
+
+  if (days_diff_now > 365) {
+    document.write(
+      '<div class="alert alert-warning expired-message">'+
+        '本文最后更新于 '+days_diff_now+' 天前（'+post_updated.format('YYYY-MM-DD')+'），'+
+        '其中的信息可能已经有所发展或者不再适用于现阶段。'+
+      '</div>'
+    );
+  }
+
+  if (days_diff_now > 1095) {
+    document.write(
+      '<div class="alert alert-info expired-message">'+
+        '你似乎正在查看一篇很久远的文章。<br>'+
+        '为了你这样的访客，我特地保留了我的历史博文。不要笑话过去的我，用温柔的目光看下去吧。'+
+      '</div>'
+    );
+  }
+</script>
+
+    
+
+    <div class="post-content">
+      
+      <div class="toc-container">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-需求分析"><span class="toc-text">0x01 需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-配置-GitHub-仓库"><span class="toc-text">0x02 配置 GitHub 仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-配置-Travis-CI"><span class="toc-text">0x03 配置 Travis CI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x31-配置部署秘钥"><span class="toc-text">0x31 配置部署秘钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x32-编写-travis-yml"><span class="toc-text">0x32 编写 .travis.yml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-后记"><span class="toc-text">0x04 后记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x41-参考链接"><span class="toc-text">0x41 参考链接</span></a></li></ol></li></ol>
+      </div>
+      
+      <p>之前（六月份高考完后）我把博客引擎由 Ghost <a href="https://blessing.studio/migrated-to-hexo/">换成了静态博客生成器 Hexo</a>，并且只使用了自带的 Git Deployment 来手动部署生成好的静态博客文件到服务器上。虽然不像动态博客程序那样可以随时随地更新博客，但是想到马上就要上大学了，之后手头都会有电脑，所以更新博客也不算那么麻烦。</p>
+<p>但是实在是人算不如天算，浙江这一届新高考改革是结结实实地把我坑了一把。二段线以上一段线未满这样中途半端的分数让人在填志愿时着实是犯难 —— 这次浙江几乎普遍出现「一段考生抢以往的二本中好学校，二段考生抢三本学校」这样神秘的情况。思来想去最后把心一横，决定去再读一年高四。后来全省高考录取情况出来后，也证实了我当时复读的决定也不是不合理的（譬如当时上了新浪微博热门话题的「浙江滑档大学」等）。</p>
+<p>关于复读的话题就先放一放吧，毕竟现在的时间确实是有些紧，可能得等到寒假时才能好好地写一篇近况报告以及关于高四生活的事情了，非常遗憾。</p>
+<p>回到正题，因为我输得透彻滚去读高四了，所以自然不可能每次都有配置完好的操作环境让我手动发博文 + 部署（虽然我也不见得有时间写什么博文）。在这样的前提条件下，一个 Hexo 博客的自动部署（持续集成）系统就显得非常有必要了。</p>
+<h2 id="0x01-需求分析"><a href="#0x01-需求分析" class="headerlink" title="0x01 需求分析"></a>0x01 需求分析</h2><p>首先我们需要了解的是，我们到底希望实现一个怎样的系统？以下是我的设想：</p>
+<ol>
+<li>更新博客文章内容后 commit 到 GitHub repo（也可以直接在 GitHub 网页上 commit）；</li>
+<li>Travis CI 自动编译生成出新的静态博客文件；</li>
+<li>自动部署至 GitHub Pages 和我自己的服务器。</li>
+</ol>
+<a id="more"></a>
+<p>虽然互联网上关于自动部署 Hexo 博客的文章已经有很多了，但是我这里还是有些需求是和他们不一样的：</p>
+<ol>
+<li>我所使用的 Seventeen 主题源码存放在 <a href="https://gitee.com/" target="_blank" rel="noopener">Gitee</a> （就是原来的 Git@OSC）上的私有仓库中（毕竟这主题只是我移植到 Hexo 上来的，主题版权依然属于<a href="https://qaq.cat/" target="_blank" rel="noopener">原作者</a>）；</li>
+<li>需要同时部署至 GitHub Pages 和我自己的 VPS 上。</li>
+</ol>
+<p>折腾期间也是踩到了一些坑，也在这里记录一下。</p>
+<h2 id="0x02-配置-GitHub-仓库"><a href="#0x02-配置-GitHub-仓库" class="headerlink" title="0x02 配置 GitHub 仓库"></a>0x02 配置 GitHub 仓库</h2><p>说实话我之前都没用过 GitHub Pages，也没打算直接用它来存放我的博客（<a href="https://blessing.studio/">blessing.studio</a> 依然部署在我的 VPS 上）。不过想想之后我也没有搞运维的时间了，多来几个博客的存档备份也是好的（反正也是免费的，笑）。</p>
+<p>怎样启用 GitHub Pages 我就不多说了，智力正常的人应该都能完成这些操作。因为域名是以用户名开头的 User Pages 默认只能显示 master 分支里的内容（我也懒得去弄 Custom domain 啥的），所以我用了不同的分支来存放不同的内容：</p>
+<ul>
+<li><strong>master</strong> 存放 Hexo 生成好的静态文件，所有 commit 信息格式均为 <code>Site updated: %Y-%m-%d %H:%M:%S</code>；</li>
+<li><strong>source</strong> 存放 scaffolds（脚手架）、source（文章 Markdown 源码）、_config.yml（Hexo 配置）等文件，commit 信息前都加上对应的 emoji（确实蛮好玩的，参见 <a href="https://gitmoji.carloscuesta.me/" target="_blank" rel="noopener">gitmoji</a>），并设置为 repo 的默认分支。</li>
+</ul>
+<p>分支操作大概像这样：</p>
+<pre><code class="shell">git init
+git remote add origin git@github.com:printempw/printempw.github.io.git
+# 新建 source 分支
+git checkout --orphan source
+git add .
+git commit -m &quot;:tada: Initial commit&quot;
+git push origin source:source
+</code></pre>
+<p>最后这个 repo 的画风是这样的：</p>
+<p><img src="https://img.blessing.studio/images/2017/10/04/snipaste_20171004_201448.png" alt="snipaste_20171004_201448.png"></p>
+<p><img src="https://img.blessing.studio/images/2017/10/04/snipaste_20171004_201526.png" alt="snipaste_20171004_201526.png"></p>
+<p>我是觉得挺不错的，你说呢？</p>
+<h2 id="0x03-配置-Travis-CI"><a href="#0x03-配置-Travis-CI" class="headerlink" title="0x03 配置 Travis CI"></a>0x03 配置 Travis CI</h2><p>怎么登录 Travis CI 并关联 GitHub 项目我也一样不多说，只要智力正常以下略。</p>
+<p>下面主要讲一下如何编写 <code>.travis.yml</code> 配置文件。</p>
+<h3 id="0x31-配置部署秘钥"><a href="#0x31-配置部署秘钥" class="headerlink" title="0x31 配置部署秘钥"></a>0x31 配置部署秘钥</h3><p>我博客的部署过程中需要用到 ssh 密钥认证的地方大概有这几处：</p>
+<ul>
+<li>从 Gitee 私有仓库 clone 主题；</li>
+<li>将编译好的文件 push 到 GitHub Pages 和 VPS。</li>
+</ul>
+<p>一般网上的文章只有一个自动 push 到 GitHub Pages 的需求，所以直接申请一个 GitHub 的 Personal access tokens，配合 Travis 的环境变量配置就可以拿到 push 权限了。不过我这里情况复杂一些，所以不如直接搞个部署秘钥来得方便（而且那个 token 是可以操作所有 repo 的，更不安全）。</p>
+<p>首先，新生成一个 ssh 密钥对（不要嫌麻烦直接把你机器上的秘钥拿去用了，太危险）：</p>
+<pre><code class="shell"># 随便生成在哪都行，文件名也随意
+$ ssh-keygen -f travis.key
+</code></pre>
+<p>然后把生成的公钥文件（e.g. <code>travis.key.pub</code>）分别添加到 GitHub Deploy Keys（在哪你自己找呀）、Gitee 部署秘钥、VPS 上的 <code>~/.ssh/authorized_keys</code> 中，这样 Travis CI 的机器就可以直接访问这些服务器了。</p>
+<p>那我们要怎么在 Travis CI 自动部署过程中使用这个私钥呢？直接放在 repo 里提交上去肯定是不行的；而且那么长一串的私钥，总不能设置成环境变量吧（摊手）。</p>
+<p>不过好在 Travis CI 提供了文件加密工具，这样我们就可以直接把加密后的私钥提交到 git repo 中，然后在 Travis CI 自动部署过程中解密出原秘钥并使用了（网上还有其他神秘的加密方法，但是没几个有 openssl aes-256-cbc 加密这样靠谱）。</p>
+<p>首先，我们需要安装 Travis 的命令行工具：</p>
+<pre><code class="shell"># 是的，你没看错，Travis 的命令行工具是用 Ruby 写的
+# 所以，想要用它你还得去安装 Ruby 环境……去吧，我的朋友
+$ sudo gem install travis
+</code></pre>
+<p>然后通过命令行登录 Travis 并加密文件：</p>
+<pre><code class="shell"># 交互式操作，使用 GitHub 账号密码登录
+# 如果是私有项目要加个 --pro 参数
+$ travis login --auto
+# 加密完成后会在当前目录下生成一个 travis.key.enc 文件
+# 还会在你的 .travis.yml 文件里自动加上用于解密的 shell 语句
+# 还 tmd 会自动格式化你的 .travis.yml 文件，去他妈的
+$ travis encrypt-file travis.key -add
+</code></pre>
+<p>需要注意的是，这些文件加密步骤<strong>不能</strong>在 Windows 系统下完成，不然在自动部署时会出现神秘的错误（wrong final block length）。这个问题已经被很多人<a href="https://github.com/travis-ci/travis-ci/issues/4746" target="_blank" rel="noopener">报告过了</a>（实际上我也踩上去了），并且<a href="https://docs.travis-ci.com/user/encrypting-files/" target="_blank" rel="noopener">官方文档</a>里也加上了这样一段话：</p>
+<p><img src="https://img.blessing.studio/images/2017/10/04/snipaste_20171004_204633.png" alt="Caveat"></p>
+<p>总之就是「辣鸡 Windows 太菜了不行，给我用 WSL 或者类 Unix 系统吧哈哈哈」的意思（迫真）经过我的测试，Windows10 下的 babun、Git Bash 均告失败，WSL（Windows Subsystem for Linux）和我 VPS 上的 Ubuntu 14.04 所生成的加密文件均可通过自动部署，屁事儿没有。</p>
+<p>以上步骤完成后你会得到一个 <code>travis.key.enc</code>，然后你把这玩意放到 repo 的哪里去都成，随你喜欢，只要能访问得到就可以（比如说我放到了 <code>.travis</code> 目录里）。然后在 <code>.travis.yml</code> 可以使用如下命令解密出原本的 ssh 私钥：</p>
+<pre><code># 环境变量 $encrypted_1fc90f464345_key 中的那一串字符是随机的，每个人都不一样，自己机灵点儿改成你自己的。这个环境变量名也可以在 Travis CI 的项目后台环境变量设置中查看
+openssl aes-256-cbc -K $encrypted_1fc90f464345_key -iv $encrypted_1fc90f464345_iv -in .travis/travis.key.enc -out ~/.ssh/id_rsa -d
+</code></pre><p>搞定了密钥认证后，我们还需要修改一下机器的 SSH 配置。为啥呢？</p>
+<p><img src="https://i.loli.net/2017/10/04/59d4dac7a6381.png" alt="snipaste_20171004_205715.png"></p>
+<p>相信大家对于上面的提示并不陌生 —— 每次我们使用 ssh 尝试连接到一个我们之前没有连接过的服务器时都会出现这样的提示。但是在 Travis CI 的自动部署过程中是不接受任何命令行输入的（好像可以，但是很麻烦），所以我们必须想办法把这个确认过程给干掉，否则自动部署就会被卡在这里直到超时了。</p>
+<p>网上搜一搜就能知道管这玩意的是 <code>./ssh/config</code> 里的 <code>StrictHostKeyChecking</code> 配置项，所以我们可以在项目里写一个自己的 ssh 配置文件，然后在自动部署过程中替换掉 Travis CI 机器的 ssh 配置：</p>
+<pre><code># 文件 [.travis/ssh_config]
+Host github.com
+    User git
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+Host gitee.com
+    User git
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+Host prinzeugen.net
+    User git
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+# 文件 [.travis.yml]
+mv -fv .travis/ssh-config ~/.ssh/config
+</code></pre><p>也有另外一种方法是通过在 <code>.travis.yml</code> 中添加 <code>ssh_known_hosts</code> 来实现的（具体可以看 Travis CI 的 <a href="https://docs.travis-ci.com/user/ssh-known-hosts/" target="_blank" rel="noopener">官方文档</a>），不过上面的方法灵活性更高（是的，我是写到这里才发现还有这种方法……上面的我也懒得删了，就放在那吧，括弧笑）。</p>
+<pre><code class="yml">addons:
+  ssh_known_hosts:
+  - github.com
+  - gitee.com
+  - prinzeugen.net
+</code></pre>
+<p>这样一来，就没有什么能阻挡我们的自动部署过程啦 <img src="https://img.blessing.studio/images/2017/10/04/QQ20171004210320.jpg" alt="表情"></p>
+<h3 id="0x32-编写-travis-yml"><a href="#0x32-编写-travis-yml" class="headerlink" title="0x32 编写 .travis.yml"></a>0x32 编写 .travis.yml</h3><p>我就直接贴我自己的配置了（放在 <a href="https://gist.github.com/printempw/42e8781ed3adadbcc6ecac01904a32f6" target="_blank" rel="noopener">Gist</a> 上，加载不出来的自己想办法），诸位看着修改：</p>
+<script src="https://work.prinzeugen.net/gist/printempw/42e8781ed3adadbcc6ecac01904a32f6.js"></script>
+
+<p>大部分语句都加了注释，我也就不再多说明了。</p>
+<p>如果不出意外，每次 push 新 commit 到 source 分支后，Travis CI 就会自动帮你构建最新的静态博客，并部署至 Github Pages 和你自己的 VPS 上了。</p>
+<p><img src="https://img.blessing.studio/images/2017/10/04/snipaste_20171004_212745.png" alt="Travis CI Build Status"></p>
+<h2 id="0x04-后记"><a href="#0x04-后记" class="headerlink" title="0x04 后记"></a>0x04 后记</h2><p>打开博客一看，上一篇博文已经是两个月之前的事情了。复读开学之后这段时间确实是挺忙的，每天晚上回寝室后屌累屌困，最多也就记记账，看看邮件，看看 RSS，闲的话刷刷 Twitter，确实是没有什么时间像这样坐下来写一篇文章了。</p>
+<p>估计以后博文更新频率也会越来越低吧，唉。</p>
+<h3 id="0x41-参考链接"><a href="#0x41-参考链接" class="headerlink" title="0x41 参考链接"></a>0x41 参考链接</h3><ul>
+<li><a href="https://changkun.us/archives/2017/06/232/" target="_blank" rel="noopener">Hexo + GitHub + Travis CI + VPS 自动部署</a></li>
+<li><a href="http://www.itfanr.cc/2017/08/09/using-travis-ci-automatic-deploy-hexo-blogs/" target="_blank" rel="noopener">使用 Travis CI 自动部署 Hexo 博客</a></li>
+<li><a href="https://segmentfault.com/a/1190000009054888" target="_blank" rel="noopener">使用 Travis 自动部署 Hexo 到 Github 与 自己的服务器</a></li>
+<li><a href="https://zespia.tw/blog/2015/01/21/continuous-deployment-to-github-with-travis/" target="_blank" rel="noopener">用 Travis CI 自動部署網站到 GitHub</a></li>
+</ul>
+
+      <div class="post-about"><p>除另有声明外，本博客文章均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">知识共享(Creative Commons) 署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a> 进行许可。</p></div>
+    </div>
+
+    <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/tech/">技术</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2017-10-04</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="deploy-hexo-blog-automatically-with-travis-ci/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/Hexo/">Hexo</a>, <a class="tag-link" href="/tag/博客/">博客</a>, <a class="tag-link" href="/tag/持续集成/">持续集成</a>
+    
+  </span>
+</div>
+
+  </article>
+
+  
+    <div class="disqus"></div>
+
+<p class="disqus-notice hentry"  style="display: none;">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>  如果评论框加载不出来，那就说明 Disqus 被墙了，你看着办吧 |ー` )
+</p>
+
+  
+
+        </div>
+
+        
+<div id="sidebar" class="fl">
+
+  
+
+  <div id="abovesb">
+    <div class="card">
+      <div class="gr center">
+        
+        <style> .gr:hover > img { opacity: initial; } </style>
+        
+        <img src="/images/avatar.jpg" width="112" height="112">
+      </div>
+
+      <div class="blogname">Blessing Studio</div>
+      <div class="blogdesc">半吊子全栈开发者的日常</div>
+
+      <div class="sbmenu">
+        <div class="menu-container">
+          <ul class="menu">
+  
+    
+    <li class="menu-item menu-item-friends">
+      <a href="/friends" title="友情链接" rel="section">
+        <i class="fa fa-link"></i>我的小伙伴们
+      </a>
+    </li>
+  
+    
+    <li class="menu-item menu-item-about">
+      <a href="/about" title="(*ﾟ∀ﾟ*)" rel="section">
+        <i class="fa fa-code"></i>关于我
+      </a>
+    </li>
+  
+</ul>
+
+        </div>
+      </div>
+    </div>
+    
+    <div id="music-player" class="aplayer hide rotated"></div>
+  </div>
+
+  <script type="text/javascript">nanobar.go(40);</script>
+
+  <div id="sb">
+    
+<div id="sbpin">
+  
+  
+  <div class="clf widget-item widget-toc">
+    <h3 class="widget-title">文章目录</h3>
+    <div class="textwidget">
+      <div class="toc-container">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-需求分析"><span class="toc-text">0x01 需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-配置-GitHub-仓库"><span class="toc-text">0x02 配置 GitHub 仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-配置-Travis-CI"><span class="toc-text">0x03 配置 Travis CI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x31-配置部署秘钥"><span class="toc-text">0x31 配置部署秘钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x32-编写-travis-yml"><span class="toc-text">0x32 编写 .travis.yml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-后记"><span class="toc-text">0x04 后记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x41-参考链接"><span class="toc-text">0x41 参考链接</span></a></li></ol></li></ol>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  <div class="clf widget-item widget_text">
+    <div class="textwidget">
+      <script type="text/javascript" src="https://work.prinzeugen.net/hitokoto/hitokoto.php?encode=javascript"></script>
+      <p id="hitokoto"><script>hitokoto();</script></p>
+    </div>
+  </div>
+  
+
+  
+  
+
+</div>
+
+  </div>
+</div>
+
+
+      </div><!-- #container -->
+
+      <div id="foot" class="fw">
+        <div id="bottom" class="fw">
+  <div id="footer" class="wc center clf">
+    <div class="info">
+      <p>Copyleft 2018 <a href="https://blessing.studio">Blessing Studio</a>. Proudly published with <a href="https://hexo.io/" target="_blank">Hexo</a>. Made with ❤ by printempw.</p>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+    </div><!-- #pageframe.fw -->
+    <script type="text/javascript">nanobar.go(80);</script>
+
+    <div class="back-to-top">
+      <span class="fa fa-angle-up"></span>
+    </div>
+
+    <script src="/js/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.libs.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script src="/libs/fancybox/source/jquery.fancybox.pack.js"></script>
+<script src="/js/script.js"></script>
+
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65656002-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    <style type="text/css">
+    .menu-item-kaomoji a {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .info-rise {
+        z-index: 99999;
+        position: absolute;
+        padding: 0 4px;
+        border-radius: 1px;
+        background-color: #f69;
+        box-shadow: 0 0 1px rgba(0,0,0,0.1);
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.5;
+        cursor: default
+    }
+</style>
+
+<script type="text/javascript">
+    var kaomoji_array = ["|∀ﾟ", "(´ﾟДﾟ`)", "(;´Д`)", "(｀･ω･)", "(=ﾟωﾟ)=", "| ω・´)", "|-` )", "|д` )", "|ー` )", "|∀` )", "(つд⊂)", "(ﾟДﾟ≡ﾟДﾟ)", "(＾o＾)ﾉ", "(|||ﾟДﾟ)", "( ﾟ∀ﾟ)", "( ´∀`)", "(*´∀`)", "(*ﾟ∇ﾟ)", "(*ﾟーﾟ)", "(　ﾟ 3ﾟ)", "( ´ー`)", "( ・_ゝ・)", "( ´_ゝ`)", "(*´д`)", "(・ー・)", "(・∀・)", "(ゝ∀･)", "(〃∀〃)", "(*ﾟ∀ﾟ*)", "( ﾟ∀。)", "( `д´)", "(`ε´ )", "(`ヮ´ )", "σ`∀´)", " ﾟ∀ﾟ)σ", "ﾟ ∀ﾟ)ノ", "(╬ﾟдﾟ)", "(|||ﾟдﾟ)", "( ﾟдﾟ)", "Σ( ﾟдﾟ)", "( ;ﾟдﾟ)", "( ;´д`)", "(　д ) ﾟ ﾟ", "( ☉д⊙)", "(((　ﾟдﾟ)))", "( ` ・´)", "( ´д`)", "( -д-)", "(>д<)", "･ﾟ( ﾉд`ﾟ)", "( TдT)", "(￣∇￣)", "(￣3￣)", "(￣ｰ￣)", "(￣ . ￣)", "(￣皿￣)", "(￣艸￣)", "(￣︿￣)", "(￣︶￣)", "ヾ(´ωﾟ｀)", "(*´ω`*)", "(・ω・)", "( ´・ω)", "(｀・ω)", "(´・ω・`)", "(`・ω・´)", "( `_っ´)", "( `ー´)", "( ´_っ`)", "( ´ρ`)", "( ﾟωﾟ)", "(oﾟωﾟo)", "(　^ω^)", "(｡◕∀◕｡)", "/( ◕‿‿◕ )\\", "ヾ(´ε`ヾ)", "(ノﾟ∀ﾟ)ノ", "(σﾟдﾟ)σ", "(σﾟ∀ﾟ)σ", "|дﾟ )", "┃電柱┃", "ﾟ(つд`ﾟ)", "ﾟÅﾟ )　", "⊂彡☆))д`)", "⊂彡☆))д´)", "⊂彡☆))∀`)", "(´∀((☆ミつ"];
+    var hits = 0;
+    var start_time = 0;
+
+    $('.menu-item-kaomoji a').click(function(e) {
+
+        if (start_time == 0) start_time = Date.now();
+
+        hits ++;
+
+        if (hits % 5 === 0) {
+            index = Math.floor(Math.random() * kaomoji_array.length);
+            $(this).html(kaomoji_array[index]);
+        }
+
+        x = $(this).offset().left + $(this).width();
+        y = $(this).offset().top + $(this).height();
+
+        if (hits % 50 === 0) {
+            var duration = 2000;
+            // actions per minite
+            var apm = parseInt(hits / ((Date.now() - start_time) / 1000) * 60);
+            start_time = 0;
+            hits = 0;
+            hit = $('<span class="info-rise" style="border: 1px solid #ffd6e4;font-size:13.5px;z-index:9999999;">手速：'+apm+' actions/min </span>');
+
+            console.log('APM: '+apm);
+        } else {
+            var duration = 500;
+            hit = $('<span class="info-rise">+1</span>');
+        }
+
+        hit.appendTo($("body"));
+
+        hit.css({
+            opacity: 0,
+            left: x,
+            top: y
+        }).animate({
+            opacity: 1,
+            top: y - 16
+        }, 250).animate({
+            opacity: 1,
+            top: y - 20
+        }, duration).animate({
+            top: y - 20
+        }, duration).animate({
+            opacity: 0,
+            top: y - 32
+        }, 250, function() {
+            return $(this).remove();
+        });
+
+    });
+</script>
+
+    <style type="text/css">
+    .p-load-gist {
+        margin: 25px 0 25px !important;
+        text-align: center;
+    }
+</style>
+
+<script type="text/javascript">
+    $('.load-gist').on('click', function() {
+        var gist = {
+            url: '//work.prinzeugen.net/gist/printempw/' + $(this).data('hash') + '.json?callback=?',
+            dom: this
+        };
+
+        $.getJSON(gist.url, function(data) {
+            gist.style      = document.createElement('link');
+            gist.style.type = 'text/css';
+            gist.style.rel  = 'stylesheet';
+            gist.style.href = data.stylesheet;
+
+            document.getElementsByTagName('HEAD')[0].appendChild(gist.style);
+
+            $(gist.dom).after(data.div).remove();
+        });
+    });
+</script>
+
+
+    
+      <script type="text/javascript">
+    String.prototype.cleanSlug = function () {
+        var search = '/index.html';
+
+        if (this.indexOf(search) === -1) {
+            return this.slice(0, -1)
+        } else {
+            return this.replace(search, '');
+        }
+    }
+
+    var Counter = function (url) {
+        this.baseCounterUrl = url;
+
+        this.initAllPostViews = function () {
+            var self = this;
+
+            // 遍历 post-view
+            $('[id=post-view]').each(function () {
+                // 默认 PV 设为 0
+                var span = $(this).html(0);
+                var slug = span.attr('data').cleanSlug();
+
+                self.getPostViewBySlug(slug, function (pv) {
+                    span.html(pv);
+                })
+            });
+        }
+
+        this.getPostViewBySlug = function (slug, callback) {
+            var url = this.baseCounterUrl + '/get/' + slug;
+
+            $.getJSON(url, function (data) {
+                callback(data.pv);
+            });
+        }
+
+        this.incPostViewBySlug = function (slug) {
+            var url = this.baseCounterUrl + '/increase/' + slug;
+
+            $.post(url, {}, function (data) {
+                $('#post-view').html(data.pv);
+            });
+        }
+    }
+
+    var counter = new Counter('https://work.prinzeugen.net/hexo-view-counter');
+
+    $(document).ready(function () {
+        counter.initAllPostViews();
+    });
+</script>
+
+
+<script type="text/javascript">
+    counter.incPostViewBySlug(
+        $('#post-view').attr('data').cleanSlug()
+    );
+</script>
+
+
+    
+
+    
+
+    
+  <script src="/js/jquery.disqusloader.js"></script>
+
+<script type="text/javascript">
+  $.disqusLoader('.disqus', {
+    scriptUrl: '//blessing-studio.disqus.com/embed.js',
+    laziness: 0,
+    preLoadCallback: function () {
+        $('.disqus-notice').show()
+    },
+    disqusConfig: function () {
+      this.callbacks.onReady = [function () {
+        $('.disqus-notice').hide()
+      }];
+    }
+  });
+</script>
+
+
+
+    <script type="text/javascript">nanobar.go(100);</script>
+  </body>
+</html>
