@@ -232,7 +232,7 @@
 <p>调用方法只要把 Gist 给你的 embed js 的地址最后的 <code>.js</code> 改为 <code>.json?callback=xxx</code> 即可（完全没查到 (((　ﾟдﾟ)))</p>
 <hr>
 <p>下面贴一下核心代码（同时也是点击预览的 DEMO）：</p>
-<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="a12f8fe71c2e3d7a2c0fcedbc6d625d2">点击以加载 Gist（无法加载时请翻墙）</button></p>
+<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="a12f8fe71c2e3d7a2c0fcedbc6d625d2">点击加载 Gist（需要科学上网）</button></p>
 <p>至于「短代码自动替换」呀、「识别 Gist 链接并 append 预览按钮」（SegmentFault 的做法）之类的，朱军可以继续研究~</p>
 <p>以上。</p>
 
@@ -816,7 +816,7 @@ if (!String.prototype.endsWith) {
 <script type="text/javascript">
     $('.load-gist').on('click', function() {
         var gist = {
-            url: '//work.prinzeugen.net/gist/printempw/' + $(this).data('hash') + '.json?callback=?',
+            url: '//gist.github.com/printempw/' + $(this).data('hash') + '.json?callback=?',
             dom: this
         };
 

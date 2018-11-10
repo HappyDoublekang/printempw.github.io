@@ -392,7 +392,7 @@ $ cp connect /usr/local/bin
 <p>mysqli 改为以面向对象的方式操作数据库，而不是 <code>mysql_</code> 系列函数的面向过程，这点倒是挺好的。</p>
 <p>不知道为何原来 LWL12 写的版本单独使用了一个表来存投票数，可能是怕效率问题。不过 <code>SELECT COUNT(*)</code> 在没有指定 WHICH 的时候效率还是蛮高的，参见：<a href="https://www.zhihu.com/question/19641756" target="_blank" rel="noopener">知乎：mysql select count(*) 与 select count(id) 两个执行效率怎样？</a></p>
 <p>其实也没改多少，另外把建表的 SQL 也顺便封装在文件里了，托管在 <a href="https://gist.github.com/printempw/48920748b328bacead1b" target="_blank" rel="noopener">Gist</a> 上。</p>
-<script src="//work.prinzeugen.net/gist/48920748b328bacead1b.js"></script>
+<script src="https://gist.github.com/printempw/48920748b328bacead1b.js"></script>
 
         
       </div>
@@ -870,7 +870,7 @@ $ cp connect /usr/local/bin
 <script type="text/javascript">
     $('.load-gist').on('click', function() {
         var gist = {
-            url: '//work.prinzeugen.net/gist/printempw/' + $(this).data('hash') + '.json?callback=?',
+            url: '//gist.github.com/printempw/' + $(this).data('hash') + '.json?callback=?',
             dom: this
         };
 

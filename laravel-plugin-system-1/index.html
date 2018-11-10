@@ -255,20 +255,19 @@
 <p>其他的字段大部分都是能够通过名字看出作用来的，所以我就不多赘述。关于那个 <code>namespace</code> 下面会讲。</p>
 <p>而引导文件 <code>bootstrap.php</code> 应该返回一个 <strong>闭包 Closure</strong>，并且在这个闭包里执行插件的初始化工作。关于这玩意会在下面的 0x04 里详细描述。</p>
 <h2 id="0x02-Plugin-插件抽象类"><a href="#0x02-Plugin-插件抽象类" class="headerlink" title="0x02 Plugin 插件抽象类"></a>0x02 <code>Plugin</code> 插件抽象类</h2><p>想好了目录结构，接下来我们需要一个 <code>Plugin</code> 类来方便从文件系统加载并存储插件信息用于这次请求的生命周期（放到容器里）。</p>
-<p>关于 <code>Plugin</code> 这个类，它是每一个具体插件的抽象，我们需要通过这玩意来进行 <strong>获取插件信息</strong>、<strong>启用/禁用</strong>、<strong>安装/删除</strong> 等操作，所以类也必须提供相应的方法：</p>
-<p>（代码块放在了 Gist 上）</p>
-<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="8bc1049481f2ba0be51eba4edccea2d5">点击以加载 Gist（无法加载时请翻墙）</button></p>
+<p>关于 <code>Plugin</code> 这个类，它是每一个具体插件的抽象，我们需要通过这玩意来进行 <strong>获取插件信息</strong>、<strong>启用/禁用</strong>、<strong>安装/删除</strong> 等操作，所以类也必须提供相应的方法（代码块放在 Gist 上）：</p>
+<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="8bc1049481f2ba0be51eba4edccea2d5">点击加载 Gist（需要科学上网）</button></p>
 <p>可以看到我们在类中使用了 <code>$packageInfo</code> 这个属性来存储 <code>json_decode</code> 解析后的 <code>package.json</code> 的内容，并通过一堆 <code>getter</code> 和 <code>setter</code> 实现了上述的功能。</p>
 <p>我们同时还实现了一些魔术方法，以让我们能够更方便的获取插件的信息。</p>
 <h2 id="0x03-PluginManager-插件经理类"><a href="#0x03-PluginManager-插件经理类" class="headerlink" title="0x03 PluginManager 插件经理类"></a>0x03 <code>PluginManager</code> 插件经理类</h2><p>这个插件经理类也是这个插件系统中很重要的一部分了，它主要负责扫描文件系统并 <strong>加载所有插件</strong>、查询数据库<strong>获取插件的启用情况</strong>、在插件被 启用/禁用/删除 时<strong>触发相应事件</strong>好让插件能够做出反应。</p>
-<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="e1cc9516189c800cd50ad7955adfc1b2">点击以加载 Gist（无法加载时请翻墙）</button></p>
+<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="e1cc9516189c800cd50ad7955adfc1b2">点击加载 Gist（需要科学上网）</button></p>
 <p>可以看到我们在 <code>PluginManager</code> 类的构造函数中使用了类型提示，这可以让 Laravel 的服务容器为我们注入我们需要的依赖。</p>
 <p>在 <code>getPlugins()</code> 方法中，我们遍历了项目根目录下的 <code>plugins</code> 目录（当然这个目录的位置你可以随意定制）。所有含有 <code>package.json</code> 的子目录都被我们视做一个个插件，并把它们实例化为 <code>Plugin</code> 对象，然后存放到自身的 <code>plugins</code> 属性中。</p>
 <p>其他诸如启用、禁用插件的方法中都应该 <strong>触发事件</strong> 让插件能够在临死之前打扫一下自己留下的东西（数据库记录等）或者执行初始化等工作。</p>
 <p><code>getEnabledBootstrappers()</code> 这个方法返回了一个储存了所有已启用插件的引导文件路径的集合，这个将在下面用到。</p>
 <p><strong>题外话</strong>：我给李们港，<code>Illuminate\Support</code> 下的包，超好用的！(つд⊂)</p>
 <h2 id="0x04-PluginServiceProvider-服务提供者"><a href="#0x04-PluginServiceProvider-服务提供者" class="headerlink" title="0x04 PluginServiceProvider 服务提供者"></a>0x04 <code>PluginServiceProvider</code> 服务提供者</h2><p>在这个服务提供者里，我们将把 <code>PluginManager</code> 绑定到服务容器上，并且初始化所有的插件。</p>
-<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="8b3632231a999a2fc1bf949d97608530">点击以加载 Gist（无法加载时请翻墙）</button></p>
+<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="8b3632231a999a2fc1bf949d97608530">点击加载 Gist（需要科学上网）</button></p>
 <p>可以看到，我们在 <code>require</code> 了各个插件的 <code>bootstrap.php</code> 文件得到了 <code>Closure</code> 对象后，使用了服务容器的 <code>call()</code> 方法调用了这个闭包。这也就意味着我们可以在 <code>bootstrap.php</code> 开心地使用 Laravel 提供的依赖注入功能啦。</p>
 <p>然后我们只要把 <code>PluginServiceProvider</code> 添加到 <code>config/app.php</code> 的服务提供者数组里去就可以加载插件机制的核心了：</p>
 <pre><code>&#39;providers&#39; =&gt; [
@@ -282,7 +281,7 @@
 <h2 id="0x21-自动加载"><a href="#0x21-自动加载" class="headerlink" title="0x21 自动加载"></a>0x21 自动加载</h2><p>既然不能像 Toby Zerner 那种猛男一样直接用 composer 管理插件，我们就必须自己为插件提供类的 <strong>自动加载</strong>。像 WordPress 那样要插件自己手动 <code>include</code> 类文件的方式早就过气了好吗，现在都啥年代了，自动加载才是王道 (ゝ∀･)☆</p>
 <p>这也是为什么上面插件的目录结构中有 <code>src</code> 这个目录，以及 <code>package.json</code> 里有 <code>namespace</code> 这个字段的原因了 —— <strong>插件 <code>src</code> 目录下的类将会被挂载至它定义的命令空间内</strong>。</p>
 <p>正如上面「目录结构」那里所演示的，我们可以直接使用 <code>SuperCache\Listener\CachePlayerJson</code> 这个类，并且该插件目录下的 <code>/src/Listener/CachePlayerJson.php</code> 文件将会被自动加载。</p>
-<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="d7eb791b346e0521f838e269d8e87bd3">点击以加载 Gist（无法加载时请翻墙）</button></p>
+<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="d7eb791b346e0521f838e269d8e87bd3">点击加载 Gist（需要科学上网）</button></p>
 <p>同样是在 <code>PluginServiceProvider</code> 这个类中，我们在加载插件的时候使用了 <code>$src_paths</code> 这个数组来储存各个插件的「命名空间」到「<code>src</code> 目录」的映射，并且通过 <code>spl_autoload_register</code> 这个内置函数注册了一个 autoload。这个 SPL 函数的文档在 <a href="http://php.net/manual/zh/function.spl-autoload-register.php" target="_blank" rel="noopener">这里</a>。</p>
 <p>当然我们在这个新的 autoload 函数中判断了所要加载的类是否存在于插件们定义的 <code>namespace</code> 中，不然的话可能会和 composer 的自动加载冲突。</p>
 <p><strong>需要注意的是</strong>，这里我使用了 <code>PSR-0</code> 规范作为插件的自动加载规范<del>（因为懒）</del>，如果想要使用 <code>PSR-4</code> 的，可以参考 composer 的实现（笑）。</p>
@@ -554,7 +553,7 @@ foreach ($plugins-&gt;getPlugins() as $plugin) {
 <script type="text/javascript">
     $('.load-gist').on('click', function() {
         var gist = {
-            url: '//work.prinzeugen.net/gist/printempw/' + $(this).data('hash') + '.json?callback=?',
+            url: '//gist.github.com/printempw/' + $(this).data('hash') + '.json?callback=?',
             dom: this
         };
 

@@ -254,7 +254,7 @@
 <p>这个样式参考了 Hexo 的一个主题：<a href="https://github.com/iissnan/hexo-theme-next/blob/master/source/js/src/post-details.js" target="_blank" rel="noopener">NexT</a>。</p>
 <h3 id="延迟加载-Disqus"><a href="#延迟加载-Disqus" class="headerlink" title="延迟加载 Disqus"></a>延迟加载 Disqus</h3><p>这其实之前就实现了，不过也在这里提一下吧。</p>
 <p>我对进行了一些改动，代码托管在 <a href="https://gist.github.com/printempw/e31ae00ddbadf1b0237c56a36e7ee6b1" target="_blank" rel="noopener">Gist</a> 上：</p>
-<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="e31ae00ddbadf1b0237c56a36e7ee6b1">点击以加载 Gist（无法加载时请翻墙）</button></p>
+<p class="p-load-gist"><button class="btn btn-default load-gist" data-hash="e31ae00ddbadf1b0237c56a36e7ee6b1">点击加载 Gist（需要科学上网）</button></p>
 <p>上面那个「点击加载 Gist」按钮也是我之前<a href="https://blessing.studio/how-to-load-gist-dynamically-via-clicking-button/">折腾</a>的。</p>
 <h3 id="添加文章目录-TOC"><a href="#添加文章目录-TOC" class="headerlink" title="添加文章目录 TOC"></a>添加文章目录 TOC</h3><p>这个也是一直想做的，然而实现了发现没地方放……</p>
 <p>以后再看看能加到哪里吧，效果参见我之前发的<a href="https://twitter.com/printempw/status/833210925255516160" target="_blank" rel="noopener">推文</a>。</p>
@@ -511,7 +511,7 @@
 <script type="text/javascript">
     $('.load-gist').on('click', function() {
         var gist = {
-            url: '//work.prinzeugen.net/gist/printempw/' + $(this).data('hash') + '.json?callback=?',
+            url: '//gist.github.com/printempw/' + $(this).data('hash') + '.json?callback=?',
             dom: this
         };
 

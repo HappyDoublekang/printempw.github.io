@@ -229,7 +229,8 @@
 <p>然而要生成一个播放列表，总不能每一次都用这个输一次 ID，然后再一个字段一个字段的复制粘贴吧？这也太不清真了，我们需要更自动化一些（笑）</p>
 <p>本来我是想用 Python 写的，但转念一想，我虽然一直在用基于 Node.js 的工具，但是除了写点 gulpfile 之外，几乎没有用 node 写过东西，于是就准备用 Node 来实现了。</p>
 <p>于是我随便咕狗了一下，找到了用于发送 HTTP 请求的库 superagent，查了一会儿文档写了个自动转换的小脚本，托管在 Gist 上：</p>
-<script src="//work.prinzeugen.net/gist/2bb8c1514589140f461630f21380867d.js"></script>
+<script src="https://gist.github.com/printempw/2bb8c1514589140f461630f21380867d.js"></script>
+
 <p>错误处理之类的懒得写了，反正可以直接看报错调试，又不是啥要紧的东西（笑）</p>
 <hr>
 <p>效果：</p>
@@ -472,7 +473,7 @@
 <script type="text/javascript">
     $('.load-gist').on('click', function() {
         var gist = {
-            url: '//work.prinzeugen.net/gist/printempw/' + $(this).data('hash') + '.json?callback=?',
+            url: '//gist.github.com/printempw/' + $(this).data('hash') + '.json?callback=?',
             dom: this
         };
 

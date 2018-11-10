@@ -238,7 +238,8 @@
 <p><img src="https://img.blessing.studio/images/2017/06/25/snipaste_20170624_222645.png" alt="Atom"></p>
 <h2 id="0x03-使用方法"><a href="#0x03-使用方法" class="headerlink" title="0x03 使用方法"></a>0x03 使用方法</h2><p>安装部署方法我不多说，自己去项目 README 看，反正就是 Laravel 那套。而且我顺便魔改了下 Lumen 的框架结构，删掉了一大票目前用不着的东西，同时把入口文件从 <code>/public</code> 子目录移到项目根目录下了，所以 Nginx 用户只需要配置好 URL 重写，Apache 用户啥都不用干就行。</p>
 <p>这个项目只提供基本的 API（具体看 README），其他逻辑需要在博客前端完成，下面贴一下我自己在用的脚本（某些语句依赖于 jQuery，可自行修改）：</p>
-<script src="//work.prinzeugen.net/gist/2e0e0c127a0f5081434b4dbe136327c1.js"></script>
+<script src="https://gist.github.com/printempw/2e0e0c127a0f5081434b4dbe136327c1.js"></script>
+
 <p>需要注意的是，「最受欢迎的文章」页面需要后端提供文章标题，但是我思来想去，都想不到什么好的解决方法。原先搞 Ghost 的访问计数器时可以直接访问 Ghost 的数据库来获取文章信息，但是静态博客就不行了。虽然想过各种自动化的方法（譬如自动去爬标题之类的），但想想还是作罢。目前情况是，文章相关的 record 会随着访问而自动生成（<code>slug</code>、<code>pv</code>、<code>created_at</code> 等字段），但是 <code>title</code> 字段并不会自动填写（NULL）。所以如果你需要热门文章功能的话，可以定期访问计数器的数据库，手动填写文章的标题信息。</p>
 <p>而且这样虽然不优雅，但也能有效防止他人恶意请求造成垃圾数据过多（静态博客没有好办法去验证请求的 <code>slug</code> 是否存在），想要清除无效数据只需运行 <code>DELETE FROM post_views WHERE title = &quot;&quot;</code> 即可。</p>
 <h2 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h2><p>对比一下使用现成服务和自己搭建的优缺点，顺便测试下 Hexo 的 GFM 表格支持：</p>
@@ -543,7 +544,7 @@
 <script type="text/javascript">
     $('.load-gist').on('click', function() {
         var gist = {
-            url: '//work.prinzeugen.net/gist/printempw/' + $(this).data('hash') + '.json?callback=?',
+            url: '//gist.github.com/printempw/' + $(this).data('hash') + '.json?callback=?',
             dom: this
         };
 
