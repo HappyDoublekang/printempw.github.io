@@ -344,8 +344,7 @@ protected function getDefaultConfirmCallback()
   
   <div class="clf widget-item widget_text">
     <div class="textwidget">
-      <script type="text/javascript" src="https://work.prinzeugen.net/hitokoto/hitokoto.php?encode=javascript"></script>
-      <p id="hitokoto"><script>hitokoto();</script></p>
+      <p id="hitokoto">正在加载一言...</p>
     </div>
   </div>
   
@@ -566,6 +565,15 @@ protected function getDefaultConfirmCallback()
     );
 </script>
 
+
+    
+
+    
+      <script type="text/javascript">
+    $.getJSON('https://work.prinzeugen.net/hitokoto/hitokoto.php', function (json) {
+        $('#hitokoto').text(json.hitokoto + '——《' + json.source + '》');
+    });
+</script>
 
     
 

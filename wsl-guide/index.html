@@ -572,8 +572,7 @@ E: /mnt/e drvfs rw,relatime,uid=1000,gid=1000,metadata,umask=22,fmask=111 0 0
   
   <div class="clf widget-item widget_text">
     <div class="textwidget">
-      <script type="text/javascript" src="https://work.prinzeugen.net/hitokoto/hitokoto.php?encode=javascript"></script>
-      <p id="hitokoto"><script>hitokoto();</script></p>
+      <p id="hitokoto">正在加载一言...</p>
     </div>
   </div>
   
@@ -794,6 +793,15 @@ E: /mnt/e drvfs rw,relatime,uid=1000,gid=1000,metadata,umask=22,fmask=111 0 0
     );
 </script>
 
+
+    
+
+    
+      <script type="text/javascript">
+    $.getJSON('https://work.prinzeugen.net/hitokoto/hitokoto.php', function (json) {
+        $('#hitokoto').text(json.hitokoto + '——《' + json.source + '》');
+    });
+</script>
 
     
 
