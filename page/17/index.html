@@ -172,6 +172,54 @@
 
     <article class="post post-type-normal hentry">
       <h2 class="post-title">
+        <a href="/chrome-hsts/">Chrome 下使支持 https 的站点默认使用 ssl 加密</a>
+      </h2>
+
+      <div class="post-content">
+        
+          <p>有些网站比如 V2EX 支持 https 但是不强制使用 https，在 chrome 下我们可以通过设置使访问 V2EX 强制使用 https 。</p>
+<p>方法很简单，在 <a href="chrome://net-internals/#hsts" target="_blank" rel="noopener">chrome://net-internals/#hsts</a> 中添加需要使用 HSTS 的站点即可。</p>
+<blockquote>
+<p>HSTS (HTTP Strict Transport Security)，HTTP严格传输安全，是一套由互联网工程任务组发布的互联网安全策略机制。网站可以选择使用HSTS策略，来让浏览器强制使用HTTPS与网站进行通信，以减少会话劫持风险。</p>
+</blockquote>
+<p>HSTS 的作用是强制客户端（如浏览器）使用HTTPS与服务器创建连接。</p>
+<p>比如，<a href="https://example.com/" target="_blank" rel="noopener">https://example.com/</a> 的响应头含有 <span class="lang:default decode:true  crayon-inline ">Strict-Transport-Security: max-age=31536000; includeSubDomains</span> 。这意味着两点：</p>
+<ol>
+<li>在接下来的一年（即31536000秒）中，浏览器只要向 example.com 或其子域名发送 HTTP 请求时，必须采用 HTTPS 来发起连接。比如，用户点击超链接或在地址栏输入 <a href="http://www.example.com/" target="_blank" rel="noopener">http://www.example.com/</a> ，浏览器应当自动将 http 转写成 https，然后直接向 <a href="https://www.example.com/" target="_blank" rel="noopener">https://www.example.com/</a> 发送请求。</li>
+<li>在接下来的一年中，如果 example.com 服务器发送的 TLS 证书无效，用户不能忽略浏览器警告继续访问网站。</li>
+</ol>
+<p>以上内容引自 <a href="https://zh.wikipedia.org/wiki/HTTP%E4%B8%A5%E6%A0%BC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8" target="_blank" rel="noopener">中文维基百科</a>。</p>
+
+        
+      </div>
+
+      <div class="post-meta clf">
+  <span class="pmt pms fa-book">
+    
+      <a class="category-link" href="/categories/tech/">技术</a>
+    
+  </span>
+  <span class="pmt pms fa-clock-o">2015-07-24</span>
+
+  
+  <span class="pmt pms fa-eye">
+    <span id="post-view" data="chrome-hsts/">Loading</span> Hits
+  </span>
+  
+
+  <span class="pmt pms extra fa-tag">
+    
+      <a class="tag-link" href="/tag/Chrome/">Chrome</a>, <a class="tag-link" href="/tag/Https/">Https</a>
+    
+  </span>
+</div>
+
+    </article>
+  
+    
+
+    <article class="post post-type-normal hentry">
+      <h2 class="post-title">
         <a href="/zh-wikipedia-had-been-bloceked-by-gfw/">好久没上 Wikipedia 了都不知道</a>
       </h2>
 
@@ -629,54 +677,6 @@ server_name_in_redirect off; ＃服务器名称重定向：关
   <span class="pmt pms extra fa-tag">
     
       <a class="tag-link" href="/tag/ACGN/">ACGN</a>
-    
-  </span>
-</div>
-
-    </article>
-  
-    
-
-    <article class="post post-type-normal hentry">
-      <h2 class="post-title">
-        <a href="/move-to-conoha-tokyo/">全站已搬迁至 conoha 东京机房</a>
-      </h2>
-
-      <div class="post-content">
-        
-          <p>顶图是 conoha 的看板娘 <a href="http://xn--y8j1ek.com/" target="_blank" rel="noopener">美雲このは</a> 哟~</p>
-<hr>
-<p>被安利了 <a href="https://www.conoha.jp/referral/?token=Hyo3NTnicLIo3cbI2WwTxiROdkwejqSmtGGr1tm5xlpZ25m.Rao-QWN" target="_blank" rel="noopener">conoha</a>（窝的推广链接（笑） 的东京机房，窝去看看了看，费用是 900円/月，换算成软妹币差不多45块（安倍经济学大法好 <a href="https://img.blessing.studio/images/2015/03/i_f25.png" target="_blank" rel="noopener"><img src="https://img.blessing.studio/images/2015/03/i_f25.png" alt="i_f25"></a>）。通过别人的推广链接注册还可以送 1000日元。当时咱就无脑注册了一个 vps 玩玩，配置如下：</p>
-<p><a href="https://img.blessing.studio/images/2015/07/2015-07-13_02-37-59.png" target="_blank" rel="noopener"><img src="https://img.blessing.studio/images/2015/07/2015-07-13_02-37-59-1024x86.png" alt="20150712134657"></a></p>
-<p>配置还算不错，而且东京机房应该会比 SFO 机房快一些（对各种线路用户来说</p>
-<p>付完款到手以后，发现IP竟然被！墙！了！ <a href="https://img.blessing.studio/images/2015/07/2015-07-11_13-57-54.jpg" target="_blank" rel="noopener"><img src="https://img.blessing.studio/images/2015/07/2015-07-11_13-57-54.jpg" alt="20150711215742"></a></p>
-<p>本来想发 tickets 的，后来转念一想，反正是月底结算，就删掉了 vps 重建了一个。</p>
-<p>conoha 和 digitalocean 不一样，删掉 vps 重新创建是可以改掉 IP 地址的，新的IP终于可以正常访问了 <a href="https://img.blessing.studio/images/2015/03/i_f25.png" target="_blank" rel="noopener"><img src="https://img.blessing.studio/images/2015/03/i_f25.png" alt="i_f25"></a>，遂将 conoha.prinzeugen.net 解析至 vps 开始折腾~</p>
-<p>lnmp 咱已经不想再搞他了 <a href="https://img.blessing.studio/images/2015/06/2015-06-27_15-39-05.jpg" target="_blank" rel="noopener"><img src="https://img.blessing.studio/images/2015/06/2015-06-27_15-39-05.jpg" alt="QQ图片20150627233807"></a> 这次咱用的是 <a href="http://amh.sh/" target="_blank" rel="noopener">amh面板</a>，6块一个月并不算贵。如果你手头紧就自行搜索破解版吧，咱也不好推荐盗版</p>
-<p>使用 amh 的一键安装脚本很快就可以配置好，而且是用户友好的 gui 界面，配置很方便，咱很快就把ngnix+PHP+mysql的运行环境搭建好了。amh 面板的软件下载页很全，几乎需要用到的环境都可以找到 <a href="https://img.blessing.studio/images/2015/07/2015-07-11_13-57-54.jpg" target="_blank" rel="noopener"><img src="https://img.blessing.studio/images/2015/07/2015-07-11_13-57-54.jpg" alt="20150711215742"></a> 就算是窝也不想天天黑底白字啊</p>
-<p>顺便将NS换成了dnspod ，正捣腾着amh的时候突然出了上篇文那档子事，不过还好晚上12点左右就恢复了。现在又用回了花生壳的 dns 解析。主域名都已经解析至 conoha 的 vps ，原来的破虚机<a href="http://vhost.prinzeugen.net/" target="_blank" rel="noopener">在这里</a></p>
-<p>虽然中途有碰到过各种事，但也不是什么值得记录的，就先这样吧  <a href="https://img.blessing.studio/images/2015/05/20150503085737.jpg" target="_blank" rel="noopener"><img src="https://img.blessing.studio/images/2015/05/20150503085737.jpg" alt="20150503085737"></a></p>
-
-        
-      </div>
-
-      <div class="post-meta clf">
-  <span class="pmt pms fa-book">
-    
-      <a class="category-link" href="/categories/diary/">日常</a>
-    
-  </span>
-  <span class="pmt pms fa-clock-o">2015-07-13</span>
-
-  
-  <span class="pmt pms fa-eye">
-    <span id="post-view" data="move-to-conoha-tokyo/">Loading</span> Hits
-  </span>
-  
-
-  <span class="pmt pms extra fa-tag">
-    
-      <a class="tag-link" href="/tag/VPS/">VPS</a>, <a class="tag-link" href="/tag/博客/">博客</a>
     
   </span>
 </div>
