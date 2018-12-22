@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blessing.studio/friends/index.html</loc>
+    
+    <lastmod>2018-12-22T05:30:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blessing.studio/hexo-plugin-to-make-posts-sage-unlisted/</loc>
     
     <lastmod>2018-11-14T15:33:30.000Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://blessing.studio/phpstudy-prober-page-502-bad-gateway/</loc>
     
     <lastmod>2018-10-21T12:36:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blessing.studio/friends/index.html</loc>
-    
-    <lastmod>2018-10-11T09:00:30.000Z</lastmod>
     
   </url>
   
